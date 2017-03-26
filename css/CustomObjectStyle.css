@@ -1,0 +1,9 @@
+#belous_photo{
+    width: 100%;
+    border: 2px dotted green;
+}
+
+#belous_block{
+    width: 70%;
+    margin: 0px 15% 0px 15%;
+}

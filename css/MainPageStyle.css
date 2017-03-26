@@ -1,0 +1,257 @@
+@font-face {
+    font-family: Menu_Font; /* Гарнитура шрифта */
+    src: url(../fonts/Menu_Font.ttf); /* Путь к файлу со шрифтом */
+}
+
+.Caps{
+    text-transform: uppercase;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+html {
+    overflow-y: visible;
+}
+
+body {
+    margin: 0px;
+    background-image: url("../images/MainBackground5.jpg");
+    background-size: 20%;
+
+    font-family: Menu_Font;
+
+}
+
+A {
+    color: black;
+    font-style: normal;
+    text-decoration: none
+}
+
+/*заголовок*/
+.header {
+    width: 100%;
+    height: 50px;
+    margin: 0px;
+    position: fixed;
+    background-image: url("../images/header.jpg");
+    background-color: #fa7d00;
+    background-size: contain;
+    z-index: 100;
+}
+
+.Menu {
+    width: 70%;
+}
+
+.Icon {
+    width: 30%;
+}
+
+#CrossDiv {
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+
+    float: right;
+    margin-right: 10%;
+    border: 3px inset black;
+    border-radius: 22px;
+    background-image: url("../images/cross.jpg");
+    background-size: 100%;
+}
+
+.MenuButton {
+    display: inline-block;
+    width: 19%;
+    height: 50px;
+    margin: 0px;
+    padding-top: 0px;
+    text-align: center;
+
+    font-size: 1.8em;
+    font-family: Menu_Font;
+
+    color: floralwhite;
+
+    border-color: white;
+    border-left: 4px ridge white;
+    border-right: 4px ridge white;
+	transition: 0.5s ease-out;
+}
+
+#OpenMenu{
+    display: none;
+}
+
+.Menu ul {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+
+.MenuButton:hover {
+    background-color: #fa7d00;
+}
+
+/*Конец заголовка*/
+
+/*Содержание*/
+.ContentBlock {
+    background-color: #fffefa;
+    position: relative;
+    top: 60px;
+    box-shadow: 5px 5px 3px 7px grey;
+    padding: 1%;
+}
+
+.ContentLeft {
+    clear: left;
+    /*height: 500px;*/
+    width: 16%;
+
+    margin: 5px 1% 0px 15%;
+
+}
+
+.Present {
+    height: 150px;
+    width: 48%;
+    margin: 5px 15% 0px 1%;
+    padding: 0px 1% 0px 1%;
+
+    background-image: url("../images/grass.png");
+    background-size: 30%;
+    background-repeat: repeat-x;
+    background-position: bottom;
+}
+
+.MainContent {
+    /*height: 500px;*/
+    width: 48%;
+
+    margin: 20px 15% 0px 1%;
+}
+
+#PresentImageDiv {
+    width: 20%;
+    height: 130px;
+    margin: 10px 5% 10px 10%;
+
+    box-shadow: 2px 2px 1px 2px grey;
+    background-color: #fffefa;
+
+    background-image: url("../images/church2.jpg");
+    background-size: cover;
+}
+
+#PresentWords {
+    width: 60%;
+    height: 130px;
+    margin: 5px 0% 10px 0%;
+    line-height: 110%;
+    font-family: Menu_Font;
+    font-size: 140%;
+    font-weight: bold;
+    color: #00662a;
+}
+
+/* Конец содержания*/
+/*Заголовок мобильный*/
+@media handheld, (max-width: 1200px) {
+    .Menu {
+        position: relative;
+        min-height: 40px;
+    }
+
+    .Icon {
+        width: 20%
+    }
+
+    #CrossDiv {
+        margin: 3px;
+    }
+
+
+
+    .Menu ul {
+        width:90%;
+        display: none;
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+    }
+
+    .MenuButton {
+        width: 100%;
+        margin: 0 0 1px 0px;
+        background-image: url("../images/header.jpg");
+        background-size: contain;
+    }
+
+    #OpenMenu{
+        display: block;
+        width: 90%;
+    }
+
+    .MenuButton:hover {
+        background-image: none;
+    }
+
+    /*#OpenMenu:focus ~ ul, #OpenMenu:active ~ ul, .Menu ul:hover{
+        display: block;
+    }*/
+
+
+
+    /*Конец мобильного заголовка*/
+    /*Мобильное содержание*/
+    .ContentLeft {
+        display: none;
+    }
+
+    .Present {
+        width: 80%;
+        margin: 5px 10% 0px 10%;
+        height: 160px;
+        background-size: 60%;
+    }
+
+    .MainContent {
+        width: 80%;
+        margin: 15px 10% 0px 10%;
+    }
+
+    #PresentImageDiv {
+        margin: 3px;
+    }
+
+    #PresentWords {
+        width: 70%;
+        font-size: 120%;
+    }
+}
+
+@media (max-width: 450px) {
+    #PresentImageDiv {
+        display: none;
+    }
+
+    #PresentWords {
+        width: 100%;
+    }
+
+    .Present{
+        background-size: 100%;
+    }
+}
+
+/*Конец мобильного содержания*/
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1">
+
+    <!--Везде-->
+    <link rel="stylesheet" href="../../../css/MainPageStyle.css">
+    <link rel="stylesheet" href="../../../css/News.css">
+
+    <script type="text/javascript" src="../../../js/Constants.js"></script>
+    <script type="text/javascript" src="../../../js/MainTemplates.js"></script>
+    <script type="text/javascript" src="../../../js/MainFunctions.js"></script>
+    <script type="text/javascript" src="../../../js/global_data.js"></script>
+    <!--Везде-->
+
+    <link rel="stylesheet" href="../../../css/lightbox.min.css" >
+    <link rel="stylesheet" href="../../../css/GalleryType.css" >
+
+    <script type="text/javascript" src="local_data.js"></script>
+    <script type="text/javascript" src="../../../js/WorkWithImages.js"></script>
+    <script type="text/javascript" src="../../../js/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="../../../js/lightbox.js"></script>
+
+
+    <script>
+        function ready() {
+            FormPage(MainPageTemplate, FormPreNewsString(News), document.body.innerHTML);
+            document.getElementById('NewsTitle').innerHTML = FormTitleStringByNum(News, 2);
+
+            var Doc = document.getElementsByClassName('ImagesSection');
+            LoadImagesByList(ImagesInfo,Doc[0], 'ImgInNews');
+
+            LoadLightBox();
+        }
+        document.addEventListener('DOMContentLoaded',ready);
+
+    </script>
+
+
+
+</head>
+<body>
+<h3 class="APieceOfNewsTitle Caps" id="NewsTitle"></h3>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Сегодня, в день Рождества Христова, иерей Василий (Белоус) посетил детский дом в д.Ясень, чтобы разделить радость праздника с малышами.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Его там уже ждали. Детишки подготовили колядки, в которых прославили пришествие нашего Бога в мир. За старание и звонкость голосов они получили сладкие подарки.</p>
+
+
+<div class="ImagesSection">
+
+</div>
+
+</body>
+</html>

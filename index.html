@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/MainPageStyle.css">
+    <link rel="stylesheet" href="css/News.css">
+
+    <script type="text/javascript" src="js/Constants.js"></script>
+    <script type="text/javascript" src="js/MainTemplates.js"></script>
+    <script type="text/javascript" src="js/MainFunctions.js"></script>
+    <script type="text/javascript" src="js/global_data.js"></script>
+
+    <link rel="stylesheet" href="css/CustomObjectStyle.css">
+
+    <script>
+        function ready() {
+            FormPage(MainPageTemplate,LeftBlockContent_index);
+            LoadNews(News);
+        }
+        document.addEventListener('DOMContentLoaded',ready)
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

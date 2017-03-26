@@ -1,0 +1,46 @@
+.GalleryBlock{
+    display: inline-block;
+    border: 4px double #00662a;
+    border-radius: 15px;
+
+    width: 150px;
+    height: 230px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.GalleryPreImageBlock{
+    height: 170px;
+    width: 150px;
+    overflow: hidden;
+}
+
+.GalleryImg{
+    /*height:150px;*/
+    width: 150px;
+    position: relative;
+}
+
+
+
+.GalleryText{
+    height: 50px;
+    text-align: center;
+}
+.GalleryBlock:hover{
+    border: 4px solid #00662a;
+}
+
+.ImgInGallery{
+    display: inline-block;
+    height: 170px;
+}
+
+.ImgInNews{
+    width: 100%;
+}
+
+.ImagesSection{
+    width: 100%;
+    text-align: center;
+}
