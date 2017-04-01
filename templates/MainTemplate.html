@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1">
+    <title>Осиповичское благочиние</title>
+    {Other_Attributes}
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/png">
+    <link rel="stylesheet" href="css/MainPageStyle.css">
+    <link rel="stylesheet" href="css/News.css">
+    {Stylesheets_Addings}
+
+    <script type="text/javascript" src="js/Constants.js"></script>
+    <script type="text/javascript" src="js/MainTemplates.js"></script>
+    <script type="text/javascript" src="js/MainFunctions.js"></script>
+    <script type="text/javascript" src="js/global_data.js"></script>
+    {JS_Modules_Addings}
+    <script>
+        function OnLoad()
+        {
+            PrepareForMobile();
+            {JS_OnLoad_Addings}
+        }
+        document.addEventListener('DOMContentLoaded',OnLoad);
+    </script>
+
+
+</head>
+<body>
+<div class="header">
+    <div class="Icon left">
+        <div id="CrossDiv"></div>
+    </div>
+    <div class="Menu right">
+        <a id="OpenMenu" class="MenuButton" href="javascript: void(0); ">Меню</a>
+        <ul id=MenuSet>
+            <a class="MenuButton" href="index.php">Главная</a>
+            <a class="MenuButton" href="ChurchesInfo.php">Храмы</a>
+            <a class="MenuButton" href="ChurchesTimetable.php">Расписания</a>
+            <a class="MenuButton" href="Gallery.php">Фотоальбом</a>
+        </ul>
+    </div>
+</div>
+<!--Начинаем содержание-->
+
+<div id="LeftContentID" class="ContentLeft ContentBlock left">
+    {Left_Content}
+</div>
+<div class="Present ContentBlock right">
+    <div id="PresentImageDiv" class="left">
+    </div>
+    <p id="PresentWords" class="right">
+        Московский патриархат<br>
+        Белорусский экзархат<br>
+        Бобруйская епархия<br>
+        Осиповичское благочиние
+    </p>
+</div>
+
+<div id="MainContentID" class="MainContent ContentBlock right">
+    {MainContent}
+</div>
+
+</body>
+</html>

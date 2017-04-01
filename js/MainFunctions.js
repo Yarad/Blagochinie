@@ -1,4 +1,5 @@
-function FormPage() {
+/*
+    function FormPage() {
     var Doc;
     var icon=FROM_ROOT+'images/'+'favicon.ico';
     var link = document.createElement('link');
@@ -27,13 +28,14 @@ function FormPage() {
     else
         document.title = MAIN_TITLE;
 }
+*/
+
 
 function PrepareForMobile(){
     if (window.matchMedia("(max-width: 1200px)").matches){
         document.addEventListener('click', OpenBody_click);
     }
 }
-
 function OpenBody_click(){
     var temp = event.target;
     var Doc = document.getElementById('MenuSet');
@@ -57,37 +59,22 @@ var AmountOfPages;
 var Doc;
 var NewsArray;
 
-function LoadNews(InputNewsArray) {
-    Doc = document.getElementById('MainContentID'); //где будет менюшка
+function LoadNews(InputNewsArray, IDToPlace) {
+    Doc = document.getElementById(IDToPlace); //где будет менюшка
     NewsArray = InputNewsArray;
     AmountOfPages = Math.ceil(NewsArray.length / NewsPerPage); //кол-во страниц по кол-ву новостей
     DrawNews(Doc, NewsArray, (CurrentPage - 1) * NewsPerPage, CurrentPage * NewsPerPage);//отобразить новости текущей страницы
 
     var PageArr = CalculatePages(AmountOfPages, CurrentPage, MaxPageLinks); //возвращает массив тех значений, которые
-                                                                            // будут отображаться в меню
+                                                                         // будут отображаться в меню
     DrawPageLinks(Doc, PageArr); //отрисовывает меню для перехода по страницам
 }
-
-function FormPreNewsString(InputNewsArray) {
-    var s = '<h3 class="APieceOfNewsTitle" align="center">Новости</h3>';
-    for (var i = 0; (i<ShortNewsAmount) && (i<InputNewsArray.length) ; i++)
-        s += '<a class = "News" href="'+FROM_ROOT+'news/'+
-            InputNewsArray[i].Link +
-            '"><p class="ShortNewsForm Caps">' +
-            InputNewsArray[i].Data +
-            '<br> ' +
-            InputNewsArray[i].Name +
-            '</p></a>';
-    return s;
-}
-
 function DrawNews(Doc, NewsArray, First, Last) {
     for (var i = First; (i < Last) && (i < NewsArray.length); i++) {
-        var TempDate = new Date(NewsArray[i].Data);
         Doc.innerHTML +=
-            '<a class="News" href = "news/'+ NewsArray[i].Link + '">' +
+            '<a class="News" href = "news.php?Date='+ NewsArray[i]["Date"] + '&' + 'Num=' + i + '">' +
             '<p class="APieceOfNewsTitle Caps">' +
-            NewsArray[i].Data + ' ' + NewsArray[i].Name +
+            NewsArray[i].Date + ' ' + NewsArray[i].Name +
             '</p>' +
             '<p class="APieceOfNewsText">' +
             NewsArray[i].Annotation +
@@ -161,7 +148,6 @@ function CalculatePages(AmountOfPages, CurrentPage, MaxPageLinks) {
     return ResArr;
 
 }
-
 function DrawPageLinks(Doc, PageArray) {
     var i;
     Doc.innerHTML = Doc.innerHTML + '<div class="PageLinksContainer"></div>';
@@ -171,7 +157,6 @@ function DrawPageLinks(Doc, PageArray) {
         Doc[0].innerHTML += '<div class="PageLinks" id="' + PageArray[i] + '" onclick="TurnPage(' + PageArray[i] + ')"  >' + PageArray[i] + '</div>';
     }
 }
-
 function TurnPage(PageInput) {
     if (PageInput != Space) {
         CurrentPage = PageInput;
@@ -183,3 +168,8 @@ function TurnPage(PageInput) {
     }
 }
 
+
+//подлежит удалению
+function FormTitleStringByNum(NewsArray, Num) {
+return NewsArray[NewsArray.length - Num].Data + ' ' + NewsArray[NewsArray.length - Num].Name;
+}

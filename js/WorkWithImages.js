@@ -10,10 +10,6 @@ function LoadImagesByList(List, Place, TheirClass) {
 
 }
 
-function FormTitleStringByNum(NewsArray, Num) {
-    return NewsArray[NewsArray.length - Num].Data + ' ' + NewsArray[NewsArray.length - Num].Name;
-}
-
 function LoadGalleryPreInfo(GalleryArray, Doc) {
 
     //Doc.innerHTML = '';
@@ -36,7 +32,6 @@ function LoadImageSectionTitle(Title, Doc) {
         '</div>';
 
 }
-
 
 function CheckGalleryForMobile(Doc) {
 

@@ -18,7 +18,7 @@ const MobileOpenMenuButtonID = 'OpenMenu';
 
 const FolderWithLocalImages = 'images';
 
-const NewsPerPage = 10;
+const NewsPerPage = 2;
 const MaxPageLinks = 10;
 const Space = "...";
 const ShortNewsAmount = 10;
