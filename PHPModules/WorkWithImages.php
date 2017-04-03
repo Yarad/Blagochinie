@@ -31,12 +31,12 @@ function FormListOfImages(&$PreparedArrayOfImagesPaths, $template)
     $result = "";
     foreach ($PreparedArrayOfImagesPaths as $key => $Image) {
         $temp = $s;
-        $temp = str_replace('{SmallImage}', $Image['SmallPath'], $temp);
+        $temp = str_replace('{SmallPath}', $Image['SmallPath'], $temp);
 
-        if (isset($Image["BigImage"]))
-            $temp = str_replace('{BigImage}', $Image['BigPath'], $temp);
+        if (isset($Image["BigPath"]))
+            $temp = str_replace('{BigPath}', $Image['BigPath'], $temp);
         else
-            $temp = str_replace('{BigImage}'," ", $temp);
+            $temp = str_replace('{BigPath}'," ", $temp);
 
         //эти будут у всех стандартные. Расширяем ниже!
         if (isset($Image["Title"]))
@@ -89,7 +89,7 @@ function FormGalleriesShortInfo(&$GalleryArray, $PrePhotoFolder,$CurrGalleryHand
     $result = "";
     foreach ($GalleryArray as $key => $Image) {
         $temp = $s;
-        $temp = str_replace('{SmallImage}', $PrePhotoFolder . '/' . $Image['SmallImageName'], $temp);
+        $temp = str_replace('{SmallPath}', $PrePhotoFolder . '/' . $Image['SmallImageName'], $temp);
         $temp = str_replace('{Title}',$Image["Title"],$temp);
         $temp = str_replace('{Link}', $CurrGalleryHandler . '?'. "ID=" . $Image["ID"], $temp);
         $result .= $temp;

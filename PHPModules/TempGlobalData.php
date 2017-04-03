@@ -35,3 +35,30 @@ $AllChurches = array(
             "SmallImageName" => "svyatovved.jpg"
         )
 );
+
+$AllAlbums = array(
+    "1_MainAlbum" =>
+        array(
+            "Title" => "Разное",
+            "ID" => "1_MainAlbum",
+            "SmallImageName" => "1_MainAlbum.jpg"
+        ),
+    "2_2015_YablochniySpas" =>
+        array(
+            "Title" => "Яблочный Спас 2015 <br> Осиповичи, Татарка, Ясень",
+            "ID" => "2_2015_YablochniySpas",
+            "SmallImageName" => "2_2015_YablochniySpas.jpg"
+        ),
+    "3_2016_maslenitsa" =>
+        array(
+            "Title" => "Масленица 2016",
+            "ID" => "3_2016_maslenitsa",
+            "SmallImageName" => "3_2016_maslenitsa.jpg"
+        ),
+    "4_2016_Vvedenie" =>
+        array(
+            "Title" => "Введение 2016",
+            "ID" => "4_2016_Vvedenie",
+            "SmallImageName" => "4_2016_Vvedenie.jpg"
+        ),
+);

@@ -192,6 +192,7 @@ A {
         width: 100%;
         margin: 0 0 1px 0px;
         background-image: url("../images/header.jpg");
+        background-color: #ff6c00;
         background-size: contain;
     }
 

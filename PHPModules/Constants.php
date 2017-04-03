@@ -12,6 +12,8 @@ define('CURR_NEWS_PAGE', 'CurrentNews.html');
 define('CHURCHES_TIMETABLE_FOLDER', 'churches/Timetable');
 define('CHURCHES_INFO_FOLDER', 'churches/Info');
 define('CHURCHES_PREPHOTO_FOLDER','churches/PrePhoto');
+define('GALLERY_FOLDER','Gallery');
+define('GALLERY_PREPHOTO_FOLDER','Gallery/PrePhoto');
 
 define('FOLDER_WITH_LOCAL_IMAGES', 'images');
 define('NEWS_FOLDER', 'news');
