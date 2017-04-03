@@ -29,8 +29,6 @@
         document.title = MAIN_TITLE;
 }
 */
-
-
 function PrepareForMobile(){
     if (window.matchMedia("(max-width: 1200px)").matches){
         document.addEventListener('click', OpenBody_click);

@@ -26,12 +26,7 @@ function LoadGalleryPreInfo(GalleryArray, Doc) {
     }
 }
 
-function LoadImageSectionTitle(Title, Doc) {
-    Doc.innerHTML += '<h3 class="APieceOfNewsTitle" align="center">' + Title + '</h3>'+
-        '<div class="ImagesSection">' +
-        '</div>';
 
-}
 
 function CheckGalleryForMobile(Doc) {
 
@@ -51,4 +46,12 @@ function CheckGalleryForMobile(Doc) {
             ImagesArray[i+1].style.height = ""+H+'px'+"";
         }
     }
+}
+
+//подлежит удалению
+function LoadImageSectionTitle(Title, Doc) {
+Doc.innerHTML += '<h3 class="APieceOfNewsTitle" align="center">' + Title + '</h3>'+
+    '<div class="ImagesSection">' +
+    '</div>';
+
 }

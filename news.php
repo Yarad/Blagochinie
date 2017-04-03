@@ -23,25 +23,22 @@ else
 $HTML_File = file_get_contents("templates/MainTemplate.html");
 
 $Other_Attributes = "";
-$Stylesheets_Addings = ' <link rel="stylesheet" href="css/lightbox.min.css" >
-                         <link rel="stylesheet" href="css/GalleryType.css" >';
+$Stylesheets_Addings = ' <link rel="stylesheet" href="css/lightbox.min.css" />
+                         <link rel="stylesheet" href="css/GalleryType.css" />';
 
 $JS_Modules_Addings = '<script type="text/javascript" src="js/WorkWithImages.js"></script>
                        <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
-                       <script type="text/javascript" src="js/lightbox.js"></script>
-                       <script type="text/javascript" src="local_data.js"></script>';
+                       <script type="text/javascript" src="js/lightbox.js"></script>';
 
 $JS_OnLoad_Addings ="
             //var Doc = document.getElementsByClassName('ImagesSection');
             //LoadImagesByList(ImagesInfo,Doc[0], 'ImgInNews');
 
-            //LoadLightBox();";
+            LoadLightBox();";
 
 $Left_Content = FormShortNewsList($AllNews);
 
-$Main_Content = FormCurrNewsTitleByNum($AllNews,$CurrNum);
-$Main_Content .=
-
+$Main_Content = FormCurrNewsContentByNum($AllNews,$CurrNum);
 
 $HTML_File = str_replace("{Other_Attributes}", $Other_Attributes, $HTML_File);
 $HTML_File = str_replace("{Stylesheets_Addings}", $Stylesheets_Addings, $HTML_File);
