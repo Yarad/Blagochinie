@@ -9,19 +9,25 @@ include_once 'PHPModules/TempGlobalData.php';
 include 'PHPModules/MainFunctions.php';
 include_once 'PHPModules/Constants.php';
 
+if(count($_GET) == 0) {
+    $CurrID = "svyatovved";
+}
+else
+{
+    $CurrID = $_GET['ID'];
+}
+
 $HTML_File = file_get_contents("templates/MainTemplate.html");
-$AllNewsInJSON = json_encode($AllNews, JSON_UNESCAPED_UNICODE);
 
 $Other_Attributes = "";
-$Stylesheets_Addings = '<link rel="stylesheet" href="css/CustomObjectStyle.css">
-                        <link rel="stylesheet" href="css/GalleryType.css">';
-$JS_Modules_Addings = '<script type="text/javascript" src="js/WorkWithImages.js"></script>';
+$Stylesheets_Addings = '';
+$JS_Modules_Addings = '';
 
 $JS_OnLoad_Addings = "";
 
 $Left_Content = FormShortNewsList($AllNews);
-$Main_Content = FormSmallHeaderByStr(CHURCHES_TIMETABLE_TITLE);
-$Main_Content .= FormGalleriesShortInfo($AllChurches,CHURCHES_PREPHOTO_FOLDER,"CurrChurchTimetable.php");
+$Main_Content = FormSmallHeaderByStr($AllChurches[$CurrID]["Title"]);
+$Main_Content .= FillPageByTemplate(CHURCHES_TIMETABLE_FOLDER . '/' . $AllChurches[$CurrID]['ID'],$AllChurches[$CurrID]['ID'] . '.html', file_get_contents('templates/NewsImageTemplate.html'));
 
 $HTML_File = str_replace("{Other_Attributes}", $Other_Attributes, $HTML_File);
 $HTML_File = str_replace("{Stylesheets_Addings}", $Stylesheets_Addings, $HTML_File);
@@ -33,3 +39,21 @@ $HTML_File = str_replace("{MainContent}", $Main_Content, $HTML_File);
 
 
 echo $HTML_File;
+
+
+
+/*
+    <script>
+        function ready() {
+            Doc = Doc.getElementsByClassName('ImagesSection');
+            LoadChurhesPreInfo(ChurchesList,Doc[0],AssignTimetable);
+        }
+        document.addEventListener('DOMContentLoaded',ready);
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
+*/

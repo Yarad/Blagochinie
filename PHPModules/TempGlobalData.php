@@ -25,10 +25,13 @@ $AllNews = array(
     )
 );
 
+
+//договоренность: *.html называется так же, как и папка
 $AllChurches = array(
-    array(
-        "Name" => "Свято-Введенский храм.",
-        "PrePhotoName" => "svyatovved.jpg",
-        "Folder" => "svyatovved"
-    )
+    "svyatovved" =>
+        array(
+            "Title" => "Свято-Введенский храм.",
+            "ID" => "svyatovved",
+            "SmallImageName" => "svyatovved.jpg"
+        )
 );

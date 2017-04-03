@@ -1,41 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<?php
+/**
+ * Created by PhpStorm.
+ * User: user
+ * Date: 30.03.2017
+ * Time: 2:38
+ */
+include_once 'PHPModules/TempGlobalData.php';
+include 'PHPModules/MainFunctions.php';
+include_once 'PHPModules/Constants.php';
 
-    <!--Везде-->
-    <meta name="viewport" content="width=device-width; initial-scale=1">
+$HTML_File = file_get_contents("templates/MainTemplate.html");
+$AllNewsInJSON = json_encode($AllNews, JSON_UNESCAPED_UNICODE);
 
-    <link rel="stylesheet" href="../css/MainPageStyle.css">
-    <link rel="stylesheet" href="../css/News.css">
+$Other_Attributes = "";
+$Stylesheets_Addings = '<link rel="stylesheet" href="css/CustomObjectStyle.css">
+                        <link rel="stylesheet" href="css/GalleryType.css">';
+$JS_Modules_Addings = '<script type="text/javascript" src="js/WorkWithImages.js"></script>';
 
-    <script type="text/javascript" src="../js/Constants.js"></script>
-    <script type="text/javascript" src="../js/MainTemplates.js"></script>
-    <script type="text/javascript" src="../js/MainFunctions.js"></script>
-    <script type="text/javascript" src="../js/global_data.js"></script>
-    <!--Везде-->
+$JS_OnLoad_Addings = "";
 
-    <link rel="stylesheet" href="../css/CustomObjectStyle.css">
-    <link rel="stylesheet" href="../css/GalleryType.css">
+$Left_Content = FormShortNewsList($AllNews);
+$Main_Content = FormSmallHeaderByStr(CHURCHES_INFO_TITLE);
+$Main_Content .= FormGalleriesShortInfo($AllChurches,CHURCHES_PREPHOTO_FOLDER,"CurrChurchInfo.php");
 
-    <script type="text/javascript" src="local_data.js"></script>
-    <script type="text/javascript" src="../js/ChurchesFunctions.js"></script>
-    <script type="text/javascript" src="../js/WorkWithImages.js"></script>
+$HTML_File = str_replace("{Other_Attributes}", $Other_Attributes, $HTML_File);
+$HTML_File = str_replace("{Stylesheets_Addings}", $Stylesheets_Addings, $HTML_File);
+$HTML_File = str_replace("{JS_Modules_Addings}", $JS_Modules_Addings, $HTML_File);
+$HTML_File = str_replace("{JS_OnLoad_Addings}", $JS_OnLoad_Addings, $HTML_File);
+
+$HTML_File = str_replace("{Left_Content}", $Left_Content, $HTML_File);
+$HTML_File = str_replace("{MainContent}", $Main_Content, $HTML_File);
 
 
-    <script>
-        function ready() {
-            FormPage(MainPageTemplate,FormPreNewsString(News));
-            Doc = document.getElementById('MainContentID');
-            LoadImageSectionTitle(CHURCHES_INFO_TITLE,Doc);
-            Doc = Doc.getElementsByClassName('ImagesSection');
-            LoadChurhesPreInfo(ChurchesList,Doc[0],AssignInfo);
-        }
-        document.addEventListener('DOMContentLoaded',ready);
-    </script>
-
-</head>
-<body>
-
-</body>
-</html>
+echo $HTML_File;

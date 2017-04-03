@@ -5,36 +5,29 @@
  * Date: 30.03.2017
  * Time: 2:38
  */
-include 'PHPModules/TempGlobalData.php';
+include_once 'PHPModules/TempGlobalData.php';
 include 'PHPModules/MainFunctions.php';
-
-$AllNewsInJSON = json_encode($AllNews);
+include_once 'PHPModules/Constants.php';
 
 if(count($_GET) == 0) {
-    $CurrNum = 0;
-    $CurrDate = $AllNews[0]['Date'];
+    $CurrID = "svyatovved";
 }
 else
 {
-    $CurrNum = $_GET['Num'];
-    $CurrDate =$_GET['Date'];
+    $CurrID = $_GET['ID'];
 }
 
 $HTML_File = file_get_contents("templates/MainTemplate.html");
 
 $Other_Attributes = "";
-$Stylesheets_Addings = ' <link rel="stylesheet" href="css/lightbox.min.css" />
-                         <link rel="stylesheet" href="css/GalleryType.css" />';
+$Stylesheets_Addings = '';
+$JS_Modules_Addings = '';
 
-$JS_Modules_Addings = '<script type="text/javascript" src="js/WorkWithImages.js"></script>
-                       <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
-                       <script type="text/javascript" src="js/lightbox.js"></script>';
-
-$JS_OnLoad_Addings ="LoadLightBox();";
+$JS_OnLoad_Addings = "";
 
 $Left_Content = FormShortNewsList($AllNews);
-
-$Main_Content = FormCurrNewsContentByNum($AllNews,$CurrNum);
+$Main_Content = FormSmallHeaderByStr($AllChurches[$CurrID]["Title"]);
+$Main_Content .= FillPageByTemplate(CHURCHES_INFO_FOLDER . '/' . $AllChurches[$CurrID]['ID'],$AllChurches[$CurrID]['ID'] . ".html", file_get_contents('templates/NewsImageTemplate.html'));
 
 $HTML_File = str_replace("{Other_Attributes}", $Other_Attributes, $HTML_File);
 $HTML_File = str_replace("{Stylesheets_Addings}", $Stylesheets_Addings, $HTML_File);

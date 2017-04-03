@@ -15,27 +15,42 @@ function GetImagesPathsFromFolder($FolderName)
             continue;
 
         if (exif_imagetype($FolderName . '/' . FOLDER_WITH_BIGGER_IMAGES . '/' . $CurrFileName)) {
-            $result[$Iterator]['SmallPath'] = $FolderName . '/' . FOLDER_WITH_SMALLER_IMAGES . '/' . $CurrFileName;
-            $result[$Iterator]['BigPath'] = $FolderName . '/' . FOLDER_WITH_BIGGER_IMAGES . '/' . $CurrFileName;
+            if (file_exists($FolderName . '/' . FOLDER_WITH_SMALLER_IMAGES))
+                $result[$Iterator]['SmallPath'] = $FolderName . '/' . FOLDER_WITH_SMALLER_IMAGES . '/' . $CurrFileName;
+            if (file_exists($FolderName . '/' . FOLDER_WITH_BIGGER_IMAGES))
+                $result[$Iterator]['BigPath'] = $FolderName . '/' . FOLDER_WITH_BIGGER_IMAGES . '/' . $CurrFileName;
             $Iterator++;
         }
     }
     return $result;
 }
 
-function FormListOfImages(&$PreparedArrayOfImagesPaths)
+function FormListOfImages(&$PreparedArrayOfImagesPaths, $template)
 {
-    $s = file_get_contents('templates/NewsImageTemplate.html');
+    $s = $template;
     $result = "";
     foreach ($PreparedArrayOfImagesPaths as $key => $Image) {
         $temp = $s;
         $temp = str_replace('{SmallImage}', $Image['SmallPath'], $temp);
-        $temp = str_replace('{BigImage}', $Image['BigPath'], $temp);
-        $temp = str_replace('{Title}', " ", $temp);
+
+        if (isset($Image["BigImage"]))
+            $temp = str_replace('{BigImage}', $Image['BigPath'], $temp);
+        else
+            $temp = str_replace('{BigImage}'," ", $temp);
+
+        //эти будут у всех стандартные. Расширяем ниже!
+        if (isset($Image["Title"]))
+            $temp = str_replace('{Title}', $Image["Title"], $temp);
+        else
+            $temp = str_replace('{Title}', " ", $temp);
+
+        if (isset($Image["Link"]))
+            $temp = str_replace('{Link}', $Image["Link"], $temp);
+
         $result .= $temp;
     }
     $s = file_get_contents('templates/ImagesSection.html');
-    return str_replace('{Images}',$result,$s);
+    return str_replace('{Images}', $result, $s);
 }
 
 function GetResizedImage($SourceImagePath, $maxwidth, $maxheight)
@@ -68,9 +83,19 @@ function GetResizedImage($SourceImagePath, $maxwidth, $maxheight)
     return $thumb;
 }
 
-function FormGalleryByArray()
+function FormGalleriesShortInfo(&$GalleryArray, $PrePhotoFolder,$CurrGalleryHandler)
 {
-    
+    $s = file_get_contents('templates/GalleryAlbumTemplate.html');
+    $result = "";
+    foreach ($GalleryArray as $key => $Image) {
+        $temp = $s;
+        $temp = str_replace('{SmallImage}', $PrePhotoFolder . '/' . $Image['SmallImageName'], $temp);
+        $temp = str_replace('{Title}',$Image["Title"],$temp);
+        $temp = str_replace('{Link}', $CurrGalleryHandler . '?'. "ID=" . $Image["ID"], $temp);
+        $result .= $temp;
+    }
+    $s = file_get_contents('templates/ImagesSection.html');
+    return str_replace('{Images}', $result, $s);
 }
 
 /*function ShowListOfNews(&$PreparedArrayOfImages)

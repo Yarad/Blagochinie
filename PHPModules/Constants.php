@@ -9,8 +9,10 @@
 define('CURR_NEWS_PAGE', 'CurrentNews.html');
 
 //папки
-define('FOLDER_WITH_CHURCH_PAGES', 'PagesOfChurches');
-define('CHURCHES_PREPHOTO_FOLDER', 'ChurchesPrePhoto');
+define('CHURCHES_TIMETABLE_FOLDER', 'churches/Timetable');
+define('CHURCHES_INFO_FOLDER', 'churches/Info');
+define('CHURCHES_PREPHOTO_FOLDER','churches/PrePhoto');
+
 define('FOLDER_WITH_LOCAL_IMAGES', 'images');
 define('NEWS_FOLDER', 'news');
 define('FOLDER_WITH_SMALLER_IMAGES', 'small');
