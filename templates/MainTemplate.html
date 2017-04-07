@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width; initial-scale=1">
-    <title>Осиповичское благочиние</title>
-    {Other_Attributes}
+    <meta name="keywords" content="осиповичи православие благочиние церковь храм">
+    {Other_Attributes}    
+    <title>{Title}</title>
+    
 
     <link rel="shortcut icon" href="images/favicon.ico" type="image/png">
     <link rel="stylesheet" href="css/MainPageStyle.css">
@@ -22,10 +24,40 @@
         }
         document.addEventListener('DOMContentLoaded',OnLoad);
     </script>
-
-
 </head>
 <body>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter43982544 = new Ya.Metrika({
+                    id:43982544,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/43982544" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+
 <div class="header">
     <div class="Icon left">
         <div id="CrossDiv"></div>
@@ -48,12 +80,12 @@
 <div class="Present ContentBlock right">
     <div id="PresentImageDiv" class="left">
     </div>
-    <p id="PresentWords" class="right">
+    <div id="PresentWords" class="right">
         Московский патриархат<br>
         Белорусский экзархат<br>
         Бобруйская епархия<br>
-        Осиповичское благочиние
-    </p>
+        <h1>Осиповичское благочиние</h1>
+    </div>
 </div>
 
 <div id="MainContentID" class="MainContent ContentBlock right">

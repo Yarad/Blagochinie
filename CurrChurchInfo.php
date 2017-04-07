@@ -19,7 +19,8 @@ else
 
 $HTML_File = file_get_contents("templates/MainTemplate.html");
 
-$Other_Attributes = "";
+$Title = $AllChurches[$CurrID]["Title"]  . ' Осиповичи.' ;
+$Other_Attributes = '<meta name="description" content="храмы осиповичского района. история, осиповичи. Телефон. Адрес.">';
 $Stylesheets_Addings = '';
 $JS_Modules_Addings = '';
 
@@ -29,6 +30,7 @@ $Left_Content = FormShortNewsList($AllNews);
 $Main_Content = FormSmallHeaderByStr($AllChurches[$CurrID]["Title"]);
 $Main_Content .= FillPageByTemplate(CHURCHES_INFO_FOLDER . '/' . $AllChurches[$CurrID]['ID'],$AllChurches[$CurrID]['ID'] . ".html", file_get_contents('templates/NewsImageTemplate.html'));
 
+$HTML_File = str_replace("{Title}", $Title, $HTML_File);
 $HTML_File = str_replace("{Other_Attributes}", $Other_Attributes, $HTML_File);
 $HTML_File = str_replace("{Stylesheets_Addings}", $Stylesheets_Addings, $HTML_File);
 $HTML_File = str_replace("{JS_Modules_Addings}", $JS_Modules_Addings, $HTML_File);

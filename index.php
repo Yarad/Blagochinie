@@ -9,9 +9,11 @@ include 'PHPModules/TempGlobalData.php';
 include 'PHPModules/MainFunctions.php';
 
 $HTML_File = file_get_contents("templates/MainTemplate.html");
-$AllNewsInJSON = json_encode($AllNews , JSON_UNESCAPED_UNICODE);
+$AllNewsInJSON = json_encode($AllNews,JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 
-$Other_Attributes = "";
+$Title = MAIN_TITLE;
+$Other_Attributes = '<meta name="yandex-verification" content="a8dbe64e572bc87a" />
+					 <meta name="description" content="Осиповичское благочиние. Белорусская православная церковь. Новости Осиповичи. Расписание богослужений." />';
 $Stylesheets_Addings = '<link rel="stylesheet" href="css/CustomObjectStyle.css">';
 $JS_Modules_Addings = "";
 $JS_OnLoad_Addings = "LoadNews($AllNewsInJSON,'MainContentID');";
@@ -19,6 +21,7 @@ $JS_OnLoad_Addings = "LoadNews($AllNewsInJSON,'MainContentID');";
 $Left_Content = file_get_contents("templates/ClerkAdvertisment.html");
 $Main_Content = "";
 
+$HTML_File = str_replace("{Title}", $Title, $HTML_File);
 $HTML_File = str_replace("{Other_Attributes}", $Other_Attributes, $HTML_File);
 $HTML_File = str_replace("{Stylesheets_Addings}", $Stylesheets_Addings, $HTML_File);
 $HTML_File = str_replace("{JS_Modules_Addings}", $JS_Modules_Addings, $HTML_File);

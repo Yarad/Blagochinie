@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by user on 06.02.2017.
  */
 const MAIN_TITLE = 'Осиповичское благочиние';
@@ -15,7 +15,7 @@ const MobileOpenMenuButtonID = 'OpenMenu';
 
 const FolderWithLocalImages = 'images';
 
-const NewsPerPage = 2;
+const NewsPerPage = 10;
 const MaxPageLinks = 10;
 const Space = "...";
 

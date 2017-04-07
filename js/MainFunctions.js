@@ -59,6 +59,7 @@ var NewsArray;
 
 function LoadNews(InputNewsArray, IDToPlace) {
     Doc = document.getElementById(IDToPlace); //где будет менюшка
+    console.log(InputNewsArray);
     NewsArray = InputNewsArray;
     AmountOfPages = Math.ceil(NewsArray.length / NewsPerPage); //кол-во страниц по кол-ву новостей
     DrawNews(Doc, NewsArray, (CurrentPage - 1) * NewsPerPage, CurrentPage * NewsPerPage);//отобразить новости текущей страницы
@@ -67,6 +68,7 @@ function LoadNews(InputNewsArray, IDToPlace) {
                                                                          // будут отображаться в меню
     DrawPageLinks(Doc, PageArr); //отрисовывает меню для перехода по страницам
 }
+
 function DrawNews(Doc, NewsArray, First, Last) {
     for (var i = First; (i < Last) && (i < NewsArray.length); i++) {
         Doc.innerHTML +=

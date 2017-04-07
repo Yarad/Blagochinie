@@ -161,6 +161,11 @@ A {
     font-weight: bold;
     color: #00662a;
 }
+#PresentWords>h1{
+	font-size: 105%;
+    font-weight: bold;
+	margin: 0px;
+}
 
 /* Конец содержания*/
 /*Заголовок мобильный*/

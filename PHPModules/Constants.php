@@ -41,7 +41,7 @@ define('REGULAR_EXPRESSION_FOR_IMAGES_PLACES', '#\{+[a-zA-Z0-9_]+\}#');
 
 
 //фразы
-define('MAIN_TITLE ', 'Осиповичское благочиние');
+define('MAIN_TITLE', 'Осиповичское благочиние');
 define('GALLERY_TITLE', 'Галерея');
 define('CHURCHES_INFO_TITLE', 'Информация о храмах');
 define('CHURCHES_TIMETABLE_TITLE', 'Расписание богослужений в храмах');

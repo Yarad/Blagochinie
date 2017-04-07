@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ошибка доступа</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/png">
+
+    <style>
+        body{
+            margin: 0px;
+        }
+        @font-face {
+            font-family: Error;
+            src: url("../fonts/IceFontFor404.ttf");
+        }
+
+        #MainBlock {
+            text-align: center;
+            float: left;
+            width: 50%;
+            height: 800px;
+            /*background-color: #00662a;*/
+        }
+
+        #MainBlock > h1{
+            font-family: "Error";
+            margin-top: 3px;
+        }
+
+        #LeftBlock{
+            float: left;
+            width: 25%;
+            height: 100vh;
+            background-image: url("../images/artsfon.com-61751.jpg");
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: right;
+
+        }
+
+        #RightBlock{
+            float: right;
+            width: 25%;
+            height: 100vh;
+            background-image: url("../images/artsfon.com-2.jpg");
+            background-position: left;
+            background-repeat: no-repeat;
+            background-size: cover;
+            /*background-color: #66FFFF;*/
+        }
+        #Cross{
+            height: 60px;
+            background-image: url("../images/cross2.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<div id="LeftBlock">
+
+</div>
+
+<div id="MainBlock">
+    <div id="Cross"></div>
+    <h1>Ошибка 404 <br> <u>Данная страница отсутствует.</u> <br></h1>
+    <object width="100%" height="400" id="SWFContent">
+        <param name="movie" value="../other/kitty.swf">
+        <embed src="../other/kitty.swf" width="48%" height="400">
+        </embed>
+    </object>
+</div>
+<div id="RightBlock">
+
+</div>
+</body>
+</html>
+
+<!--
+
+
+
+
+ -->
