@@ -22,7 +22,8 @@ $JS_OnLoad_Addings = "";
 
 $Left_Content = FormShortNewsList($AllNews);
 $Main_Content = FormSmallHeaderByStr(GALLERY_TITLE);
-$Main_Content .= FormGalleriesShortInfo($AllAlbums,GALLERY_PREPHOTO_FOLDER,"CurrGallery.php");
+$temp = array_reverse($AllAlbums);
+$Main_Content .= FormGalleriesShortInfo($temp,GALLERY_PREPHOTO_FOLDER,"CurrGallery.php");
 
 $HTML_File = str_replace("{Title}", $Title, $HTML_File);
 $HTML_File = str_replace("{Other_Attributes}", $Other_Attributes, $HTML_File);

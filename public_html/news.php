@@ -9,8 +9,8 @@ include 'PHPModules/TempGlobalData.php';
 include 'PHPModules/MainFunctions.php';
 
 if (count($_GET) == 0) {
-    $CurrNum = 0;
-    $CurrDate = $AllNews[0]['Date'];
+    $CurrNum = count($AllNews)-1;
+    $CurrDate = $AllNews[count($AllNews)-1]['Date'];
 } else {
     $CurrNum = $_GET['Num'];
     $CurrDate = $_GET['Date'];

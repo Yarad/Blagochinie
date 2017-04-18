@@ -72,12 +72,12 @@ function LoadNews(InputNewsArray, IDToPlace) {
 function DrawNews(Doc, NewsArray, First, Last) {
     for (var i = First; (i < Last) && (i < NewsArray.length); i++) {
         Doc.innerHTML +=
-            '<a class="News" href = "news.php?Date='+ NewsArray[i]["Date"] + '&' + 'Num=' + i + '">' +
-            '<p class="APieceOfNewsTitle Caps">' +
-            NewsArray[i].Date + ' ' + NewsArray[i].Name +
-            '</p>' +
+            '<a class="News" href = "news.php?Date='+ NewsArray[i]["Date"] + '&' + 'Num=' + (NewsArray.length - i - 1) + '">' +
+            '<h3 class="APieceOfNewsTitle Caps">' +
+            NewsArray[(NewsArray.length - i - 1)].Date + ' ' + NewsArray[(NewsArray.length - i - 1)].Name +
+            '</h3>' +
             '<p class="APieceOfNewsText">' +
-            NewsArray[i].Annotation +
+            NewsArray[(NewsArray.length - i - 1)].Annotation +
             '</p>' +
             '</a>';
 

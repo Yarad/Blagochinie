@@ -17,9 +17,9 @@ function FormShortNewsList(&$InputNewsArray)
     $s2 = file_get_contents('templates/ShortNewsTemplate.html');
 
     for ($i = 0; ($i < SHORT_NEWS_AMOUNT) && ($i < count($InputNewsArray)); $i++) {
-        $PostReq = $HrefUrl . '?' . 'Date=' . $InputNewsArray[$i]["Date"] . '&' . 'Num=' . $i;
+        $PostReq = $HrefUrl . '?' . 'Date=' . $InputNewsArray[count($InputNewsArray)-$i-1]["Date"] . '&' . 'Num=' . (count($InputNewsArray)-$i-1);
         $temp = str_replace('{Link}', $PostReq, $s2);
-        $temp = str_replace('{Text}', $InputNewsArray[$i]["Date"] . '<br> ' . $InputNewsArray[$i]["Name"], $temp);
+        $temp = str_replace('{Text}', $InputNewsArray[count($InputNewsArray)-$i-1]["Date"] . '<br> ' . $InputNewsArray[count($InputNewsArray)-$i-1]["Name"], $temp);
         $s .= $temp;
     }
     return $s;

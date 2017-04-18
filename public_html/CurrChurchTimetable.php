@@ -28,7 +28,11 @@ $JS_OnLoad_Addings = "";
 
 $Left_Content = FormShortNewsList($AllNews);
 $Main_Content = FormSmallHeaderByStr($AllChurches[$CurrID]["Title"]);
-$Main_Content .= FillPageByTemplate(CHURCHES_TIMETABLE_FOLDER . '/' . $AllChurches[$CurrID]['ID'],$AllChurches[$CurrID]['ID'] . '.html', file_get_contents('templates/NewsImageTemplate.html'));
+
+if (file_exists(CHURCHES_TIMETABLE_FOLDER . '/' . $AllChurches[$CurrID]['ID'] . '/' . $AllChurches[$CurrID]['ID'] . '.html') == true)
+    $Main_Content .= FillPageByTemplate(CHURCHES_TIMETABLE_FOLDER . '/' . $AllChurches[$CurrID]['ID'],$AllChurches[$CurrID]['ID'] . '.html', file_get_contents('templates/NewsImageTemplate.html'));
+else
+    $Main_Content .= file_get_contents("templates/NoTimetableTemplate.html");
 
 $HTML_File = str_replace("{Title}", $Title, $HTML_File);
 $HTML_File = str_replace("{Other_Attributes}", $Other_Attributes, $HTML_File);
