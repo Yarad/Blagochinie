@@ -28,17 +28,19 @@ if($AdminsRecordsDatabase==false)
     echo file_get_contents('../admin_templates/DatabaseError.html');
     exit();
 }
-
+var_dump($_POST);
 $QueryResult = mysqli_query($AdminsRecordsDatabase, "INSERT INTO `news`(`Date`, `ChurchID`, `Name`, `Annotation`) VALUES ('".$_POST['fDate']."','NULL','".$_POST['fNewsName']."','". $_POST['fNewsAnnotation']."')");
-mysqli_close($AdminsRecordsDatabase);
-
 if($QueryResult==false)
 {
     echo file_get_contents('../admin_templates/DatabaseSaveError.html');
     exit();
 }
-var_dump($_POST);
-var_dump($_FILES);
+$AddedId = mysqli_insert_id($AdminsRecordsDatabase);
+mysqli_close($AdminsRecordsDatabase);
+
+
+//var_dump($_POST);
+//var_dump($_FILES);
 
 $DateArr = explode("-",$_POST['fDate']);
 //0 - год
@@ -48,5 +50,5 @@ foreach ($_FILES as $CurrSetKey => $CurrSetValue)
 {
     $Num = explode("_",$CurrSetKey)[1];
     $CurrSetName = $_POST['fSetsOfPhotosNames'][$Num];
-    SaveSetOfImagesByDateAndName($DateArr,$CurrSetName,$CurrSetValue);
+    SaveSetOfImagesByDateNameAndNum($DateArr,$CurrSetName,$AddedId,$CurrSetValue);
 }

@@ -2,6 +2,9 @@
 include('PHPModules/Constants.php');
 include('PHPModules/GlobalFunctions.php');
 
+
+if (CheckSecurity() == true) header("Location: MainAdminPage.php");
+
 //если не введен пароль, отображаем начальную страницу
 if (!isset($_POST['login']) || !isset($_POST['password'])) {
     if (isset($_POST['exit'])) ExitById($_COOKIE[$id_field]);
