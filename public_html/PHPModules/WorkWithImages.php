@@ -53,36 +53,6 @@ function FormListOfImages(&$PreparedArrayOfImagesPaths, $template)
     return str_replace('{Images}', $result, $s);
 }
 
-function GetResizedImage($SourceImagePath, $maxwidth, $maxheight)
-{
-// получение нового размера
-    list($width, $height) = getimagesize($SourceImagePath);
-    $resolution = $width / $height;
-
-    $newwidth = $width;
-    $newheight = $height;
-
-    if ($newwidth > $maxwidth) {
-        $newwidth = $maxwidth;
-        $newheight = $newwidth / $resolution;
-    }
-
-    if ($newheight > $maxheight) {
-        $newheight = $newheight;
-        $newwidth = $newheight * $resolution;
-    }
-
-// загрузка
-    $source = imagecreatefromjpeg($SourceImagePath);
-    if (($newheight == $height) && ($newwidth == $width))
-        return $source;
-
-    $thumb = imagecreatetruecolor($newwidth, $newheight);
-// изменение размера
-    imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-    return $thumb;
-}
-
 function FormGalleriesShortInfo(&$GalleryArray, $PrePhotoFolder,$CurrGalleryHandler)
 {
     $s = file_get_contents('templates/GalleryAlbumTemplate.html');

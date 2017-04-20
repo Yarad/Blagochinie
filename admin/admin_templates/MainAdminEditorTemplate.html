@@ -1,0 +1,64 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="admin_templates/css/Main.css">
+    <script src="ckeditor/ckeditor.js"></script>
+    <script src="admin_templates/js/handlers.js"></script>
+</head>
+<body>
+
+
+<div class="header">
+
+    <div id="ExitArea">
+        <form action="index.php" method="post" style="height: 0px">
+            <button type="submit" name="exit" value="true" id="ExitButton">Выход</button>
+        </form>
+    </div>
+
+</div>
+<div class="LeftMenu"></div>
+<div class="EditorLayer">
+    <div id="MyElementsBlock">
+        <h3>Параметры добавляемой новости</h3>
+        <div class="OneParameter">
+            <div class="OneParameter_Name">Дата:</div>
+            <div class="OneParameter_Field"><input type="date" name="fDate" form="MainForm"></div>
+            <div style="clear: both"></div>
+        </div>
+        <div class="OneParameter">
+            <div class="OneParameter_Name">Название новости:</div>
+            <div class="OneParameter_Field"><textarea name="fNewsName" class="fTextboxes" form="MainForm"></textarea></div>
+            <div style="clear: both"></div>
+        </div>
+        <div class="OneParameter">
+            <div class="OneParameter_Name">Краткое описание новости:</div>
+            <div class="OneParameter_Field"><textarea name="fNewsAnnotation" class="fTextboxes" form="MainForm"></textarea></div>
+            <div style="clear: both"></div>
+        </div>
+        <div class="OneParameter">
+            <div class="OneParameter_Name">
+                <button id="AddBlocksOfPhotos" onclick="AddSetOfPhotos()"></button>
+            </div>
+            <div id="FormOfAddedPhotos" class="OneParameter_Field"></div>
+            <div style="clear: both"></div>
+        </div>
+        <form id="MainForm" enctype="multipart/form-data" method="post" action="Savers/NewsSaver.php">
+
+        </form>
+        <button id="SaveChangesButton" onclick="SaveChanges();">Сохранить</button>
+    </div>
+    <div class="ckeditor">
+        <form>
+            <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
+        </form>
+        <script>
+            // Replace the <textarea id="editor1"> with a CKEditor instance, using default configuration.
+            CKEDITOR.replace('editor1');
+        </script>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+@font-face {
+    font-family: ButtonExitFont;
+    src: url('../fonts/IceFont.ttf');
+}
+
+body {
+    margin: 0px;
+}
+
+.header {
+    height: 60px;
+    background-color: #505372;
+}
+
+.LeftMenu {
+    width: 5%;
+    height: 100vh;
+    position: fixed;
+    background-color: #8a8ec5;
+    float: left;
+}
+
+.EditorLayer {
+    float: right;
+    width: 95%;
+}
+
+#MyElementsBlock {
+    width: 28%;
+    height: 100vh;
+    overflow-y: auto;
+    float: left;
+    padding: 10px;
+}
+#MyElementsBlock>h3{
+    text-align: center;
+    font-family: ButtonExitFont;
+    text-decoration: underline;
+}
+
+.ckeditor {
+    width: 70%;
+    float: right;
+}
+
+#ExitArea {
+    width: 100px;
+    float: right;
+    margin: 10px;
+    vertical-align: middle;
+}
+
+#ExitButton {
+    width: 100%;
+    height: 40px;
+    border: #000057;
+    background-color: snow;
+    color: #505372;
+    font-size: 20px;
+    text-align: center;
+    display: inline-block;
+    font-family: ButtonExitFont;
+}
+
+#AddBlocksOfPhotos{
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+    float: left;
+    background-image: url("../images/photo.gif");
+    background-size: cover;
+    background-color: transparent;
+    border: none;
+}
+#AddBlocksOfPhotos:hover{
+    transform: rotate(15deg);
+    height: 55px;
+    width: 55px;
+    margin-bottom: 0px;
+}
+#FormOfAddedPhotos{
+    float: right;
+    display: inline-block;
+}
+
+#SaveChangesButton {
+    width: 100%;
+    height: 40px;
+    background-color: #505372;
+    color: snow;
+    font-size: 20px;
+    font-family: ButtonExitFont;
+    margin:10px 0px;
+}
+
+#SaveChangesButton:hover {
+    background-color: darkolivegreen;
+}
+
+.OneParameter {
+    margin: 10px 0px;
+    clear: both;
+}
+
+.OneParameter_Name {
+    float: left;
+    width: 30%
+}
+.OneParameter_Field {
+    float: right;
+    width: 70%;
+    height: inherit;
+}
+.fTextboxes{
+    width: 100%;
+    height: inherit;
+}
+
+.PhotosSetDescription{
+    margin:10px 0px;
+    padding: 5px;
+    background-color: #8a8ec5;
+    border-radius: 5px;
+}
+
+.DeleteCurrSetButton{
+    float: right;
+    width: 18px;
+    height: 18px;
+    padding: 2px;
+    background-image: url("../images/DeleteCurrSet.png");
+    background-color: transparent;
+    background-size: cover;
+    border: none;
+}
+.DeleteCurrSetButton:hover{
+    padding: 0px;
+    width: 22px;
+    height: 22px;
+}
+
+.LoadFilesButtons{
+    margin: 5px 0px;
+}

@@ -27,13 +27,6 @@ define('MAX_PAGE_LINKS', 10);
 define('SPACE', "...");
 define('SHORT_NEWS_AMOUNT', 10);
 
-define('NEWS_SMALL_PICTURES_MAXWIDTH', 700);
-define('NEWS_SMALL_PICTURES_MAXHEIGHT', 700);
-
-define('NEWS_BIG_PICTURES_MAXWIDTH', 1200);
-define('NEWS_BIG_PICTURES_MAXHEIGHT', 1200);
-
-
 define('ASSIGN_INFO', 'Info');
 define('ASSIGN_TIMETABLE', 'TimeTable');
 define('MOBILE_OPEN_MENU_BUTTON_ID', 'OpenMenu');
