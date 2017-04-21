@@ -19,3 +19,5 @@ define('GALLERY_TITLE', 'Галерея');
 define('CHURCHES_INFO_TITLE', 'Информация о храмах');
 define('CHURCHES_TIMETABLE_TITLE', 'Расписание богослужений в храмах');
 define('SHORT_NEWS_TITLE', 'Новости');
+
+define('SHORT_NEWS_AMOUNT',10);

@@ -6,12 +6,12 @@
  * Time: 2:38
  */
 include_once 'PHPModules/LoadingFromDatabase.php';
+include_once '../WholeProjectConstants/ProjectPaths.php';
 include 'PHPModules/MainFunctions.php';
 include_once 'PHPModules/Constants.php';
 
 $HTML_File = file_get_contents("templates/MainTemplate.html");
-$AllNewsInJSON = json_encode($AllNews, JSON_UNESCAPED_UNICODE);
-
+$AllNews = GetAllNews();
 $Title = 'Храмы Осиповичского района.' ;
 $Other_Attributes = "<meta name='description' content='Официальный сайт Осиповичского благочиния. Расписания работы всех храмов' />";
 $Stylesheets_Addings = '<link rel="stylesheet" href="css/CustomObjectStyle.css">

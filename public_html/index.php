@@ -7,12 +7,10 @@
  */
 include 'PHPModules/LoadingFromDatabase.php';
 include 'PHPModules/MainFunctions.php';
-include "../WholeProjectConstants/DatabaseConnection.php";
-
 
 $HTML_File = file_get_contents("templates/MainTemplate.html");
 $AllNews = GetAllNews();
-$AllNewsInJSON = json_encode($AllNews,JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
+$AllNewsInJSON = json_encode(array_values($AllNews),JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK);
 $Title = MAIN_TITLE;
 $Other_Attributes = '<meta name="yandex-verification" content="a8dbe64e572bc87a" />
 					 <meta name="description" content="Осиповичское благочиние. Белорусская православная церковь. Новости Осиповичи. Расписание богослужений." />';

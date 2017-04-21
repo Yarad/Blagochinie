@@ -16,11 +16,15 @@ function FormShortNewsList(&$InputNewsArray)
     $s = FormSmallHeaderByStr(SHORT_NEWS_TITLE);
     $s2 = file_get_contents('templates/ShortNewsTemplate.html');
 
-    for ($i = 0; ($i < SHORT_NEWS_AMOUNT) && ($i < count($InputNewsArray)); $i++) {
-        $PostReq = $HrefUrl . '?' . 'Date=' . $InputNewsArray[count($InputNewsArray)-$i-1]["Date"] . '&' . 'Num=' . (count($InputNewsArray)-$i-1);
+    $Amount=0;
+    //for ($i = 0; ($i < SHORT_NEWS_AMOUNT) && ($i < count($InputNewsArray)); $i++) {
+    foreach ($InputNewsArray as $id => $CurrNews){
+        $PostReq = $HrefUrl . '?' . 'Date=' . $CurrNews["Date"] . '&' . 'Num=' . $id;
         $temp = str_replace('{Link}', $PostReq, $s2);
-        $temp = str_replace('{Text}', $InputNewsArray[count($InputNewsArray)-$i-1]["Date"] . '<br> ' . $InputNewsArray[count($InputNewsArray)-$i-1]["Name"], $temp);
+        $temp = str_replace('{Text}', $CurrNews["Date"] . '<br> ' . $CurrNews["Name"], $temp);
         $s .= $temp;
+        $Amount++;
+        if ($Amount == SHORT_NEWS_AMOUNT) break;
     }
     return $s;
 }

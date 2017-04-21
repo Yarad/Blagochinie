@@ -7,6 +7,7 @@
  */
 include 'PHPModules/LoadingFromDatabase.php';
 include 'PHPModules/MainFunctions.php';
+include '../WholeProjectConstants/ProjectPaths.php';
 
 if (count($_GET) == 0) {
     $CurrNum = count($AllNews)-1;
@@ -15,7 +16,7 @@ if (count($_GET) == 0) {
     $CurrNum = $_GET['Num'];
     $CurrDate = $_GET['Date'];
 }
-
+$AllNews = GetAllNews();
 $HTML_File = file_get_contents("templates/MainTemplate.html");
 
 $Title = MAIN_TITLE . '. Новости.';

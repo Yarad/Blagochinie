@@ -5,6 +5,7 @@
  * Date: 30.03.2017
  * Time: 2:38
  */
+include_once '../WholeProjectConstants/ProjectPaths.php';
 include_once 'PHPModules/LoadingFromDatabase.php';
 include 'PHPModules/MainFunctions.php';
 include_once 'PHPModules/Constants.php';
@@ -16,7 +17,7 @@ else
 {
     $CurrID = $_GET['ID'];
 }
-
+$AllNews = GetAllNews();
 $HTML_File = file_get_contents("templates/MainTemplate.html");
 
 $Title = MAIN_TITLE  . '. Фото. ' . $AllAlbums[$CurrID]["Title"];

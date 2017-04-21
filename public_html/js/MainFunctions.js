@@ -1,53 +1,53 @@
 /*
-    function FormPage() {
-    var Doc;
-    var icon=FROM_ROOT+'images/'+'favicon.ico';
-    var link = document.createElement('link');
-    var head = document.getElementsByTagName('head')[0];
+ function FormPage() {
+ var Doc;
+ var icon=FROM_ROOT+'images/'+'favicon.ico';
+ var link = document.createElement('link');
+ var head = document.getElementsByTagName('head')[0];
 
-    link.setAttribute('href',icon);
-    link.setAttribute('type','image/x-icon');
-    link.setAttribute('rel','shortcut icon');
-    head.appendChild(link);
+ link.setAttribute('href',icon);
+ link.setAttribute('type','image/x-icon');
+ link.setAttribute('rel','shortcut icon');
+ head.appendChild(link);
 
-    document.body.innerHTML = arguments[0]; //ejs.compile(MainPageTemplate)(data);
-    PrepareForMobile(MobileOpenMenuButtonID);
+ document.body.innerHTML = arguments[0]; //ejs.compile(MainPageTemplate)(data);
+ PrepareForMobile(MobileOpenMenuButtonID);
 
-    if (arguments.length >= 2) {
-        Doc = document.getElementById('LeftContentID');
-        Doc.innerHTML = arguments[1];
-    }
-    if (arguments.length >=3){
-        Doc = document.getElementById('MainContentID');
-        Doc.innerHTML = arguments[2];
-    }
+ if (arguments.length >= 2) {
+ Doc = document.getElementById('LeftContentID');
+ Doc.innerHTML = arguments[1];
+ }
+ if (arguments.length >=3){
+ Doc = document.getElementById('MainContentID');
+ Doc.innerHTML = arguments[2];
+ }
 
-    if (arguments.length >=4){
-        document.title = arguments[3];
-    }
-    else
-        document.title = MAIN_TITLE;
-}
-*/
-function PrepareForMobile(){
-    if (window.matchMedia("(max-width: 1200px)").matches){
+ if (arguments.length >=4){
+ document.title = arguments[3];
+ }
+ else
+ document.title = MAIN_TITLE;
+ }
+ */
+function PrepareForMobile() {
+    if (window.matchMedia("(max-width: 1200px)").matches) {
         document.addEventListener('click', OpenBody_click);
     }
 }
-function OpenBody_click(){
+function OpenBody_click() {
     var temp = event.target;
     var Doc = document.getElementById('MenuSet');
 
-    if (temp.id=='OpenMenu') {
+    if (temp.id == 'OpenMenu') {
         if (getComputedStyle(Doc).display == 'none') {
             Doc.style.display = 'block';
         }
-        else{
+        else {
             Doc.style.display = 'none';
         }
 
     }
-    else{
+    else {
         Doc.style.display = 'none';
     }
 }
@@ -65,20 +65,19 @@ function LoadNews(InputNewsArray, IDToPlace) {
     DrawNews(Doc, NewsArray, (CurrentPage - 1) * NewsPerPage, CurrentPage * NewsPerPage);//отобразить новости текущей страницы
 
     var PageArr = CalculatePages(AmountOfPages, CurrentPage, MaxPageLinks); //возвращает массив тех значений, которые
-                                                                         // будут отображаться в меню
+    // будут отображаться в меню
     DrawPageLinks(Doc, PageArr); //отрисовывает меню для перехода по страницам
 }
 
 function DrawNews(Doc, NewsArray, First, Last) {
-    for (var i = First; (i < Last) && (i < NewsArray.length); i++) {
+    //for (var i = First; (i < Last) && (i < NewsArray.length); i++) {
+    console.log(NewsArray);
+    //NewsArray.forEach(function(CurrNews, id, arr) {
+    for (var CurrNews in NewsArray) {
         Doc.innerHTML +=
-            '<a class="News" href = "news.php?Date='+ NewsArray[i]["Date"] + '&' + 'Num=' + NewsArray[i]["id"] + '">' +
-            '<h3 class="APieceOfNewsTitle Caps">' +
-            NewsArray[(NewsArray.length - i - 1)].Date + ' ' + NewsArray[(NewsArray.length - i - 1)].Name +
-            '</h3>' +
-            '<p class="APieceOfNewsText">' +
-            NewsArray[(NewsArray.length - i - 1)].Annotation +
-            '</p>' +
+            '<a class="News" href = "news.php?Date=' + CurrNews["Date"] + '&' + 'Num=' + CurrNews["id"] + '">' +
+            '<h3 class="APieceOfNewsTitle Caps">' + CurrNews["Date"] + ' ' + CurrNews["Name"] + '</h3>' +
+            '<p class="APieceOfNewsText">' + CurrNews["Annotation"] + '</p>' +
             '</a>';
 
     }
@@ -171,5 +170,5 @@ function TurnPage(PageInput) {
 
 //подлежит удалению
 function FormTitleStringByNum(NewsArray, Num) {
-return NewsArray[NewsArray.length - Num].Data + ' ' + NewsArray[NewsArray.length - Num].Name;
+    return NewsArray[NewsArray.length - Num].Data + ' ' + NewsArray[NewsArray.length - Num].Name;
 }

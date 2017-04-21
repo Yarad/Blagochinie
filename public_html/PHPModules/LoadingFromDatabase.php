@@ -30,16 +30,17 @@
         "Annotation" => "Год! Целый год мы ждали этого православного Дня Победы.Весь мир ликует от одной мысли: <font color=\"red\">ХРИСТОС ВОСКРЕС!</font>",
     )
 );*/
+include "../WholeProjectConstants/DatabaseConnection.php";
+
 function GetAllNews()
 {
     $DatabaseConnect = mysqli_connect(HOST,USER,PASSWORD,DATABASE_NAME);
     $AllNews_DB = mysqli_query($DatabaseConnect,"SELECT * FROM `" . NEWS_DATABASE ."` ORDER BY `".NEWS_DATABASE."`.`" . ID_FIELD . "` DESC");
 
-    $i=0;
+
     while ($row = mysqli_fetch_assoc($AllNews_DB)) {
-        $AllNews[$i] = $row;
-        $AllNews[$i][DATE_FIELD] = ConvertDate($AllNews[$i][DATE_FIELD]);
-        $i++;
+        $AllNews[$row[ID_FIELD]] = $row;
+        $AllNews[$row[ID_FIELD]][DATE_FIELD] = ConvertDate($AllNews[$row[ID_FIELD]][DATE_FIELD]);
     }
     mysqli_close($DatabaseConnect);
     return $AllNews;

@@ -5,10 +5,12 @@
  * Date: 30.03.2017
  * Time: 2:38
  */
+include_once '../WholeProjectConstants/ProjectPaths.php';
 include_once 'PHPModules/LoadingFromDatabase.php';
 include 'PHPModules/MainFunctions.php';
 include_once 'PHPModules/Constants.php';
 
+$AllNews=GetAllNews();
 if(count($_GET) == 0) {
     $CurrID = "svyatovved";
 }
