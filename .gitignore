@@ -5,3 +5,5 @@ images/*.jpg
 *.gif
 *.jpg
 *.png
+public_html/news/
+*.psd

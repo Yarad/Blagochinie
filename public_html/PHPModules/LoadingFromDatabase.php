@@ -1,5 +1,5 @@
 <?php
-$AllNews = array(
+/*$AllNews = array(
     array
     (
         "Date" => "07.01.2017",
@@ -29,8 +29,27 @@ $AllNews = array(
         "Name" => "<font color=\"red\">Пасха 2017. Свято-Введенский храм. Фотоотчет.</font>",
         "Annotation" => "Год! Целый год мы ждали этого православного Дня Победы.Весь мир ликует от одной мысли: <font color=\"red\">ХРИСТОС ВОСКРЕС!</font>",
     )
-);
+);*/
+function GetAllNews()
+{
+    $DatabaseConnect = mysqli_connect(HOST,USER,PASSWORD,DATABASE_NAME);
+    $AllNews_DB = mysqli_query($DatabaseConnect,"SELECT * FROM `" . NEWS_DATABASE ."` ORDER BY `".NEWS_DATABASE."`.`" . ID_FIELD . "` DESC");
 
+    $i=0;
+    while ($row = mysqli_fetch_assoc($AllNews_DB)) {
+        $AllNews[$i] = $row;
+        $AllNews[$i][DATE_FIELD] = ConvertDate($AllNews[$i][DATE_FIELD]);
+        $i++;
+    }
+    mysqli_close($DatabaseConnect);
+    return $AllNews;
+}
+
+function ConvertDate($Date)
+{
+    $temp = explode('-',$Date);
+    return $temp[2].'.'.$temp[1].'.'.$temp[0];
+}
 
 //договоренность: *.html называется так же, как и папка
 $AllChurches = array(

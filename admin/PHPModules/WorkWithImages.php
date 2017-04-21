@@ -7,30 +7,42 @@
  */
 //GetResizedImage('D://temp.tmp', 700, 700);
 
+
 function SaveSetOfImagesByDateNameAndNum($DateArr, $SetName, $ID, $SetOfImages)
 {
     //var_dump($SetOfImages);
-    include "Constants.php";
-
+    include "../PHPModules/ImagesConstants.php";
     //big-small*/
-    $BigImagesPath = $path_from_savers_to_user_version . $NEWS_FOLDER . '/' . $DateArr[0] . '/' . $ID . '_' . $DateArr[2] . '.' . $DateArr[1] . '/' . $SetName . '/' . $FOLDER_WITH_BIGGER_IMAGES . '/';
-    $SmallImagesPath = $path_from_savers_to_user_version . $NEWS_FOLDER . '/' . $DateArr[0] . '/' . $ID . '_' . $DateArr[2] . '.' . $DateArr[1] . '/' . $SetName . '/' . $FOLDER_WITH_SMALLER_IMAGES . '/';
-    mkdir($BigImagesPath,0777,true);
-    mkdir($SmallImagesPath,0777,true);
+    $BigImagesPath = PATH_FROM_SAVERS_TO_USER_VERSION . NEWS_FOLDER . '/' . $DateArr[0] . '/' . $ID . '_' . $DateArr[2] . '.' . $DateArr[1] . '/' . $SetName . '/' . FOLDER_WITH_BIGGER_IMAGES . '/';
+    $SmallImagesPath = PATH_FROM_SAVERS_TO_USER_VERSION . NEWS_FOLDER . '/' . $DateArr[0] . '/' . $ID . '_' . $DateArr[2] . '.' . $DateArr[1] . '/' . $SetName . '/' . FOLDER_WITH_SMALLER_IMAGES . '/';
+    mkdir($BigImagesPath, 0777, true);
+    mkdir($SmallImagesPath, 0777, true);
 
-    chmod($BigImagesPath,0777);
+    chmod($BigImagesPath, 0777);
     var_dump(is_writable($BigImagesPath));
-    foreach ($SetOfImages['tmp_name'] as $FileName) {
-        $CurrImageBig = GetResizedImage($FileName, $NEWS_BIG_PICTURES_MAXWIDTH, $NEWS_BIG_PICTURES_MAXHEIGHT);
-        $CurrImageSmall = GetResizedImage($FileName, $NEWS_SMALL_PICTURES_MAXWIDTH, $NEWS_SMALL_PICTURES_MAXHEIGHT);
 
-        $i=1;
+    $i = 1;
+    foreach ($SetOfImages['tmp_name'] as $FileName) {
+        $CurrImageBig = GetResizedImage($FileName, NEWS_BIG_PICTURES_MAXWIDTH, NEWS_BIG_PICTURES_MAXHEIGHT);
+        $CurrImageSmall = GetResizedImage($FileName, NEWS_SMALL_PICTURES_MAXWIDTH, NEWS_SMALL_PICTURES_MAXHEIGHT);
         $ImageType = exif_imagetype($FileName);
+
         switch ($ImageType) {
-            case IMAGETYPE_JPEG: imagejpeg($CurrImageBig,$BigImagesPath . $i . $jpg_format); imagejpeg($CurrImageSmall,$SmallImagesPath . $i . $jpg_format); break;
-            case IMAGETYPE_PNG: imagepng($CurrImageBig,$BigImagesPath . $i . $png_format); imagejpeg($CurrImageSmall,$SmallImagesPath . $i . $png_format);  break;
-            case IMAGETYPE_GIF: imagegif($CurrImageBig,$BigImagesPath . $i . $gif_format); imagejpeg($CurrImageSmall,$SmallImagesPath . $i . $gif_format);  break;
-            default: echo '';
+            case IMAGETYPE_JPEG:
+                imagejpeg($CurrImageBig, $BigImagesPath . $i . JPG_FORMAT);
+                imagejpeg($CurrImageSmall, $SmallImagesPath . $i . JPG_FORMAT);
+                break;
+            case IMAGETYPE_PNG:
+                imagepng($CurrImageBig, $BigImagesPath . $i . PNG_FORMAT);
+                imagejpeg($CurrImageSmall, $SmallImagesPath . $i . PNG_FORMAT);
+                break;
+            case IMAGETYPE_GIF:
+                imagegif($CurrImageBig, $BigImagesPath . $i . GIF_FORMAT);
+                imagejpeg($CurrImageSmall, $SmallImagesPath . $i . GIF_FORMAT);
+                break;
+            default:
+                echo '';
+                break;
         }
         $i++;
     }
@@ -57,10 +69,17 @@ function GetResizedImage($SourceImagePath, $maxwidth, $maxheight)
 // загрузка
     $ImageType = exif_imagetype($SourceImagePath);
     switch ($ImageType) {
-        case IMAGETYPE_JPEG: $source = imagecreatefromjpeg($SourceImagePath); break;
-        case IMAGETYPE_PNG: $source = imagecreatefrompng($SourceImagePath); break;
-        case IMAGETYPE_GIF: $source = imagecreatefromgif($SourceImagePath);break;
-        default: return null;
+        case IMAGETYPE_JPEG:
+            $source = imagecreatefromjpeg($SourceImagePath);
+            break;
+        case IMAGETYPE_PNG:
+            $source = imagecreatefrompng($SourceImagePath);
+            break;
+        case IMAGETYPE_GIF:
+            $source = imagecreatefromgif($SourceImagePath);
+            break;
+        default:
+            return null;
     }
 
     if (($newheight == $height) && ($newwidth == $width))

@@ -1,20 +1,19 @@
 <?php
-include('PHPModules/Constants.php');
 include('PHPModules/GlobalFunctions.php');
-
+include('../WholeProjectConstants/DatabaseConnection.php');
 
 if (CheckSecurity() == true) header("Location: MainAdminPage.php");
 
-//если не введен пароль, отображаем начальную страницу
+//если не введен пароль или нажато "выход", отображаем начальную страницу
 if (!isset($_POST['login']) || !isset($_POST['password'])) {
-    if (isset($_POST['exit'])) ExitById($_COOKIE[$id_field]);
+    if (isset($_POST['exit'])) ExitById($_COOKIE[ID_FIELD]);
     echo file_get_contents('admin_templates/LoginPageTemplate.html');
     exit();
 }
 
 $Login = $_POST['login'];
 $Password = $_POST['password'];
-$AdminsRecordsDatabase = mysqli_connect($host, $user, $password, $database_name);
+$AdminsRecordsDatabase = mysqli_connect(HOST, USER, PASSWORD, DATABASE_NAME);
 
 //если база данных недоступна
 if ($AdminsRecordsDatabase == false) {
@@ -23,7 +22,7 @@ if ($AdminsRecordsDatabase == false) {
     exit();
 }
 
-$RecordByLoginAndPassword = mysqli_query($AdminsRecordsDatabase, "SELECT * FROM `$admins_records_database` WHERE $login_field='$Login' AND `$password_field`='$Password'");
+$RecordByLoginAndPassword = mysqli_query($AdminsRecordsDatabase, "SELECT * FROM `" . ADMINS_RECORDS_DATABASE ."` WHERE " . LOGIN_FIELD ."='$Login' AND `" . PASSWORD_FIELD ."`='$Password'");
 
 //если пароль введен неверно
 if ($RecordByLoginAndPassword->num_rows == 0) {
@@ -34,10 +33,10 @@ if ($RecordByLoginAndPassword->num_rows == 0) {
 
 $CurrUser = mysqli_fetch_array($RecordByLoginAndPassword);
 $ThisSessionHashCode = generateCode();
-mysqli_query($AdminsRecordsDatabase, "UPDATE `admins_records` SET `$hash_field_name`='" . $ThisSessionHashCode . "' WHERE $id_field='" . $CurrUser[$id_field] . "'");
+mysqli_query($AdminsRecordsDatabase, "UPDATE `" . ADMINS_RECORDS_DATABASE . "` SET `" . HASH_FIELD_NAME ."`='" . $ThisSessionHashCode . "' WHERE " . ID_FIELD ."='" . $CurrUser[ID_FIELD] . "'");
 
-setcookie($id_field, $CurrUser[$id_field]);
-setcookie($hash_field_name, $ThisSessionHashCode);
+setcookie(ID_FIELD, $CurrUser[ID_FIELD]);
+setcookie(HASH_FIELD_NAME, $ThisSessionHashCode);
 
 mysqli_close($AdminsRecordsDatabase);
 header("Location: MainAdminPage.php");

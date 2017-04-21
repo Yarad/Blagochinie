@@ -5,7 +5,7 @@
  * Date: 30.03.2017
  * Time: 2:38
  */
-include 'PHPModules/TempGlobalData.php';
+include 'PHPModules/LoadingFromDatabase.php';
 include 'PHPModules/MainFunctions.php';
 
 if (count($_GET) == 0) {

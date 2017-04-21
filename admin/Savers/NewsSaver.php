@@ -5,9 +5,11 @@
  * Date: 19.04.2017
  * Time: 17:28
  */
-include_once "../PHPModules/Constants.php";
+//include_once "../PHPModules/ImagesConstants.php";
 include_once "../PHPModules/GlobalFunctions.php";
 include_once "../PHPModules/WorkWithImages.php";
+include_once "../../WholeProjectConstants/DatabaseConnection.php";
+include "../../WholeProjectConstants/ProjectPaths.php";
 
 if (CheckSecurity() == false)
 {
@@ -22,14 +24,16 @@ if(!isset($_POST['fPreparedHtmlContent']))
 }
 
 
-$AdminsRecordsDatabase = mysqli_connect($host, $user, $password, $database_name);
+$AdminsRecordsDatabase = mysqli_connect(HOST, USER, PASSWORD, DATABASE_NAME);
 if($AdminsRecordsDatabase==false)
 {
     echo file_get_contents('../admin_templates/DatabaseError.html');
     exit();
 }
 var_dump($_POST);
-$QueryResult = mysqli_query($AdminsRecordsDatabase, "INSERT INTO `news`(`Date`, `ChurchID`, `Name`, `Annotation`) VALUES ('".$_POST['fDate']."','NULL','".$_POST['fNewsName']."','". $_POST['fNewsAnnotation']."')");
+
+$QueryResult = mysqli_query($AdminsRecordsDatabase, "INSERT INTO `news`(`".DATE_FIELD."`, `".CHURCH_ID_FIELD ."`, `".NEWS_NAME_FIELD."`,`".ANNOTATION_FIELD."`) VALUES ('".$_POST['fDate']."','NULL','".$_POST['fNewsName']."','". $_POST['fNewsAnnotation']."')");
+
 if($QueryResult==false)
 {
     echo file_get_contents('../admin_templates/DatabaseSaveError.html');
@@ -37,7 +41,6 @@ if($QueryResult==false)
 }
 $AddedId = mysqli_insert_id($AdminsRecordsDatabase);
 mysqli_close($AdminsRecordsDatabase);
-
 
 //var_dump($_POST);
 //var_dump($_FILES);
@@ -52,3 +55,4 @@ foreach ($_FILES as $CurrSetKey => $CurrSetValue)
     $CurrSetName = $_POST['fSetsOfPhotosNames'][$Num];
     SaveSetOfImagesByDateNameAndNum($DateArr,$CurrSetName,$AddedId,$CurrSetValue);
 }
+file_put_contents(PATH_FROM_SAVERS_TO_USER_VERSION . NEWS_FOLDER . '/' . $DateArr[0] . '/' . $AddedId . '_' . $DateArr[2] . '.' . $DateArr[1] . '/' . CURR_NEWS_PAGE,$_POST['fPreparedHtmlContent']);

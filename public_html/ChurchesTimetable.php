@@ -5,7 +5,7 @@
  * Date: 30.03.2017
  * Time: 2:38
  */
-include_once 'PHPModules/TempGlobalData.php';
+include_once 'PHPModules/LoadingFromDatabase.php';
 include 'PHPModules/MainFunctions.php';
 include_once 'PHPModules/Constants.php';
 
