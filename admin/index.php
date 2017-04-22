@@ -2,14 +2,15 @@
 include('PHPModules/GlobalFunctions.php');
 include('../WholeProjectConstants/DatabaseConnection.php');
 
+if (isset($_POST['exit'])) ExitById($_COOKIE[ID_FIELD]);
 if (CheckSecurity() == true) header("Location: MainAdminPage.php");
 
 //если не введен пароль или нажато "выход", отображаем начальную страницу
 if (!isset($_POST['login']) || !isset($_POST['password'])) {
-    if (isset($_POST['exit'])) ExitById($_COOKIE[ID_FIELD]);
     echo file_get_contents('admin_templates/LoginPageTemplate.html');
     exit();
 }
+
 
 $Login = $_POST['login'];
 $Password = $_POST['password'];

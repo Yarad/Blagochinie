@@ -36,7 +36,7 @@ function CheckSecurity()
 
 function ExitById($id)
 {
-    $AdminsRecordsDatabase = mysqli_connect(HOST, USER, PASSWORD, DATANASE_NAME);
+    $AdminsRecordsDatabase = mysqli_connect(HOST, USER, PASSWORD, DATABASE_NAME);
     $res = mysqli_query($AdminsRecordsDatabase, "UPDATE `" . ADMINS_RECORDS_DATABASE . "` SET `" . HASH_FIELD_NAME . "`=NULL WHERE " . ID_FIELD . "='$id'");
     mysqli_close($AdminsRecordsDatabase);
     setcookie(ID_FIELD, '');
@@ -54,4 +54,13 @@ function generateCode($length = 6)
         $code .= $chars[mt_rand(0, $clen)];
     }
     return $code;
+}
+
+function removeDirectory($dir) {
+    if ($objs = glob($dir."/*")) {
+        foreach($objs as $obj) {
+            is_dir($obj) ? removeDirectory($obj) : unlink($obj);
+        }
+    }
+    return rmdir($dir);
 }

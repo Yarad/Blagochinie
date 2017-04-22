@@ -59,8 +59,8 @@ var NewsArray;
 
 function LoadNews(InputNewsArray, IDToPlace) {
     Doc = document.getElementById(IDToPlace); //где будет менюшка
-    console.log(InputNewsArray);
     NewsArray = InputNewsArray;
+    //console.log("InputNewsArray - " + typeof(InputNewsArray) +":" + InputNewsArray);
     AmountOfPages = Math.ceil(NewsArray.length / NewsPerPage); //кол-во страниц по кол-ву новостей
     DrawNews(Doc, NewsArray, (CurrentPage - 1) * NewsPerPage, CurrentPage * NewsPerPage);//отобразить новости текущей страницы
 
@@ -74,10 +74,11 @@ function DrawNews(Doc, NewsArray, First, Last) {
     console.log(NewsArray);
     //NewsArray.forEach(function(CurrNews, id, arr) {
     for (var CurrNews in NewsArray) {
+        console.log(CurrNews);
         Doc.innerHTML +=
-            '<a class="News" href = "news.php?Date=' + CurrNews["Date"] + '&' + 'Num=' + CurrNews["id"] + '">' +
-            '<h3 class="APieceOfNewsTitle Caps">' + CurrNews["Date"] + ' ' + CurrNews["Name"] + '</h3>' +
-            '<p class="APieceOfNewsText">' + CurrNews["Annotation"] + '</p>' +
+            '<a class="News" href = "news.php?Date=' + NewsArray[CurrNews].Date + '&' + 'Num=' + NewsArray[CurrNews].id + '">' +
+            '<h3 class="APieceOfNewsTitle Caps">' + NewsArray[CurrNews].Date + ' ' + NewsArray[CurrNews].Name + '</h3>' +
+            '<p class="APieceOfNewsText">' + NewsArray[CurrNews].Annotation + '</p>' +
             '</a>';
 
     }

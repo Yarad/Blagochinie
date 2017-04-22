@@ -20,8 +20,18 @@ define('ID_FIELD' , 'id');
 define('HASH_FIELD_NAME' , "curr_session_hash");
 ///////////////////////////////////////////////////////////
 
+define('NEWS_ID_COOKIE_NAME','EditingNewsId');
 define('NEWS_DATABASE' , 'news');
 define('DATE_FIELD','Date');
 define('CHURCH_ID_FIELD','ChurchID');
 define('NEWS_NAME_FIELD','Name');
 define('ANNOTATION_FIELD','Annotation');
+
+///////////////////////////////////////////////////////////////
+define('DATABASE_IS_CLOSED',"Нет доступа к базе данных");
+define('DATABASE_QUERY_MISTAKE',"Ошибка запроса к базе данных: что-то не так с новостью");
+define('DELETED_SUCCESSFULLY',"Успешно удалено");
+define('DELETE_ERROR',"Ошибка удаления");
+define('ADDED_SUCCESSFULLY',"Успешно добавлено.");
+define('UPDATED_SUCCESSFULLY',"Успешно обновлено.");
+define('WRONG_DATA',"Данные введены неверно");

@@ -1,0 +1,18 @@
+.LogInfo{
+    float: left;
+    width: 37%;
+    margin: 10px 1% 10px 9%;
+    background: linear-gradient(to bottom,#0f74a8,white);
+    padding: 1%;
+    font-family: ButtonExitFont;
+    font-size: larger;
+}
+.content{
+    float: right;
+    width: 37%;
+    margin: 10px 9% 10px 1%;
+    background: linear-gradient(to bottom,#0f74a8,white);
+    padding: 1%;
+    font-family: ButtonExitFont;
+    font-size: larger;
+}

@@ -37,7 +37,7 @@ function GetAllNews()
     $DatabaseConnect = mysqli_connect(HOST,USER,PASSWORD,DATABASE_NAME);
     $AllNews_DB = mysqli_query($DatabaseConnect,"SELECT * FROM `" . NEWS_DATABASE ."` ORDER BY `".NEWS_DATABASE."`.`" . ID_FIELD . "` DESC");
 
-
+    $AllNews = [];
     while ($row = mysqli_fetch_assoc($AllNews_DB)) {
         $AllNews[$row[ID_FIELD]] = $row;
         $AllNews[$row[ID_FIELD]][DATE_FIELD] = ConvertDate($AllNews[$row[ID_FIELD]][DATE_FIELD]);

@@ -11,9 +11,9 @@
 
 <div class="header">
 
-    <div id="ExitArea">
+    <div class="ExitArea">
         <form action="index.php" method="post" style="height: 0px">
-            <button type="submit" name="exit" value="true" id="ExitButton">Выход</button>
+            <button type="submit" name="exit" value="true" class="BigButton">Выход</button>
         </form>
     </div>
 
@@ -24,17 +24,17 @@
         <h3>Параметры добавляемой новости</h3>
         <div class="OneParameter">
             <div class="OneParameter_Name">Дата:</div>
-            <div class="OneParameter_Field"><input type="date" name="fDate" form="MainForm"></div>
+            <div class="OneParameter_Field"><input type="date" name="fDate" form="MainForm" value="{DefaultDate}"></div>
             <div style="clear: both"></div>
         </div>
         <div class="OneParameter">
             <div class="OneParameter_Name">Название новости:</div>
-            <div class="OneParameter_Field"><textarea name="fNewsName" class="fTextboxes" form="MainForm"></textarea></div>
+            <div class="OneParameter_Field"><textarea name="fNewsName" class="fTextboxes" form="MainForm">{DefaultName}</textarea></div>
             <div style="clear: both"></div>
         </div>
         <div class="OneParameter">
             <div class="OneParameter_Name">Краткое описание новости:</div>
-            <div class="OneParameter_Field"><textarea name="fNewsAnnotation" class="fTextboxes" form="MainForm"></textarea></div>
+            <div class="OneParameter_Field"><textarea name="fNewsAnnotation" class="fTextboxes" form="MainForm">{DefaultAnnotation}</textarea></div>
             <div style="clear: both"></div>
         </div>
         <div class="OneParameter">
@@ -45,16 +45,15 @@
             <div style="clear: both"></div>
         </div>
         <form id="MainForm" enctype="multipart/form-data" method="post" action="Savers/NewsSaver.php">
-
+            <input type="text" name="Type" style="display: none" value="{Type}"/>
         </form>
         <button id="SaveChangesButton" onclick="SaveChanges();">Сохранить</button>
     </div>
     <div class="ckeditor">
         <form>
-            <textarea name="editor1" id="editor1" rows="10" cols="80"></textarea>
+            <textarea name="editor1" id="editor1" rows="10" cols="80"> {DefaultText} </textarea>
         </form>
         <script>
-            // Replace the <textarea id="editor1"> with a CKEditor instance, using default configuration.
             CKEDITOR.replace('editor1');
         </script>
     </div>
