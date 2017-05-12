@@ -7,17 +7,7 @@
     <script src="admin_templates/js/handlers.js"></script>
 </head>
 <body>
-
-
-<div class="header">
-
-    <div class="ExitArea">
-        <form action="index.php" method="post" style="height: 0px">
-            <button type="submit" name="exit" value="true" class="BigButton">Выход</button>
-        </form>
-    </div>
-
-</div>
+{MainMenu}
 <div class="LeftMenu"></div>
 <div class="EditorLayer">
     <div id="MyElementsBlock">
@@ -44,9 +34,7 @@
             <div id="FormOfAddedPhotos" class="OneParameter_Field"></div>
             <div style="clear: both"></div>
         </div>
-        <form id="MainForm" enctype="multipart/form-data" method="post" action="Savers/NewsSaver.php">
-            <input type="text" name="Type" style="display: none" value="{Type}"/>
-        </form>
+        <form id="MainForm" enctype="multipart/form-data" method="post" action="NewsSaver.php"></form>
         <button id="SaveChangesButton" onclick="SaveChanges();">Сохранить</button>
     </div>
     <div class="ckeditor">

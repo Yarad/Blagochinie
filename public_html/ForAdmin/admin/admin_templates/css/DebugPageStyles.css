@@ -1,0 +1,15 @@
+.CenterBlock{
+    width: 80%;
+    margin: 10px 10%;
+}
+
+.ColumnBlock{
+    display: inline-block;
+    background-color: #3b3b1f;
+    margin: 0px 0.5px;
+}
+
+.RequestInput{
+    width: 80%;
+    height: 50px;
+}

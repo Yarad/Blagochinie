@@ -6,7 +6,7 @@
  * Time: 2:38
  */
 include_once 'PHPModules/LoadingFromDatabase.php';
-include_once '../WholeProjectConstants/ProjectPaths.php';
+include_once 'ForAdmin/WholeProjectConstants/ProjectPaths.php';
 include 'PHPModules/MainFunctions.php';
 include_once 'PHPModules/Constants.php';
 

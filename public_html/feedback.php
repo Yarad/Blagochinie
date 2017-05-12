@@ -10,31 +10,22 @@ include 'PHPModules/MainFunctions.php';
 include 'ForAdmin/WholeProjectConstants/ProjectPaths.php';
 
 $AllNews = GetAllNews();
-if (count($_GET) == 0) {
-    $CurrNum = count($AllNews)-1;
-    $CurrDate = $AllNews[count($AllNews)-1]['Date'];
-} else {
-    $CurrNum = $_GET['Num'];
-    $CurrDate = $_GET['Date'];
-}
+$FeedBackInfo = GetFeedBackInfo();
 
 $HTML_File = file_get_contents("templates/MainTemplate.html");
 
-$Title = MAIN_TITLE . '. Новости.';
-$Other_Attributes = "<meta name = 'description' content='" . $AllNews[$CurrNum]["Name"] . "' />";
+$Title = 'Обратная связь';
+$Other_Attributes = "<meta name = 'description' content='Обратная связь со священниками Осиповичского района' />";
 
-$Stylesheets_Addings = ' <link rel="stylesheet" href="css/lightbox.min.css" />
-                         <link rel="stylesheet" href="css/GalleryType.css" />';
+$Stylesheets_Addings = '<link rel="stylesheet" href="css/feedback.css">';
 
-$JS_Modules_Addings = '<script type="text/javascript" src="js/WorkWithImages.js"></script>
-                       <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
-                       <script type="text/javascript" src="js/lightbox.js"></script>';
+$JS_Modules_Addings = '';
 
-$JS_OnLoad_Addings = "LoadLightBox();";
+$JS_OnLoad_Addings = "";
 
 $Left_Content = FormShortNewsList($AllNews);
 
-$Main_Content = FormCurrNewsContentByNum($AllNews, $CurrNum);
+$Main_Content = FormSmallHeaderByStr("Обратная связь") . '<p align="center">(Выберите того, кому хотите написать, и заполните сообщение снизу страницы)</p>' . FormFeedbackRecords($FeedBackInfo);
 
 $HTML_File = str_replace("{Title}", $Title, $HTML_File);
 $HTML_File = str_replace("{Other_Attributes}", $Other_Attributes, $HTML_File);

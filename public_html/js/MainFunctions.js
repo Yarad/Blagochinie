@@ -71,9 +71,11 @@ function LoadNews(InputNewsArray, IDToPlace) {
 
 function DrawNews(Doc, NewsArray, First, Last) {
     //for (var i = First; (i < Last) && (i < NewsArray.length); i++) {
-    console.log(NewsArray);
+    //console.log(NewsArray);
     //NewsArray.forEach(function(CurrNews, id, arr) {
-    for (var CurrNews in NewsArray) {
+    //for (var CurrNews in NewsArray) {
+    for (var i = First; (i < Last) && (i < NewsArray.length); i++) {
+        CurrNews = i;
         console.log(CurrNews);
         Doc.innerHTML +=
             '<a class="News" href = "news.php?Date=' + NewsArray[CurrNews].Date + '&' + 'Num=' + NewsArray[CurrNews].id + '">' +
@@ -154,7 +156,7 @@ function DrawPageLinks(Doc, PageArray) {
 
     Doc = Doc.getElementsByClassName("PageLinksContainer");
     for (i = 0; i < PageArray.length; i++) {
-        Doc[0].innerHTML += '<div class="PageLinks" id="' + PageArray[i] + '" onclick="TurnPage(' + PageArray[i] + ')"  >' + PageArray[i] + '</div>';
+        Doc[0].innerHTML += '<a class="PageLinks" href="#" id="' + PageArray[i] + '" onclick="TurnPage(' + PageArray[i] + ')">' + PageArray[i] + '</a>';
     }
 }
 function TurnPage(PageInput) {

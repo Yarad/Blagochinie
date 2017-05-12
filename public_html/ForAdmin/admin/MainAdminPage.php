@@ -2,6 +2,8 @@
 include('PHPModules/GlobalFunctions.php');
 include('../WholeProjectConstants/DatabaseConnection.php');
 
+//AddAdmin('Yarad','rehcrfz');
+//AddAdmin('anastasi','alitheia');
 
 if (CheckSecurity() == false)
 {

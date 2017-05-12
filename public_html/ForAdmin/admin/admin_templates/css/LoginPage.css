@@ -1,0 +1,46 @@
+@font-face {
+    font-family: HeaderFont;
+    src: url('../fonts/IceFont.ttf');
+}
+
+body{
+    background-image: url("../images/loginbackground.jpg");
+    background-size: cover;
+}
+.LoginForm{
+    width: 270px;
+    height: 66vh;
+    padding: 5vh 15px 5vh 15px;
+    margin: 10vh 0px 10vh 10vh;
+    background: radial-gradient(#d48285, #8b3d3c);
+    border: 2vh inset #650000;
+    box-shadow: 15px 15px 10px 0px #1b0000;
+}
+
+.LoginForm>h2{
+    color: #650000;
+    text-align: center;
+    font-family: HeaderFont;
+}
+
+.LoginForm>input{
+    width: 80%;
+    margin: 5px 10% 5px 10%;
+    height: 30px;
+    font-size: 25px;
+}
+.LoginForm>button{
+    width: 80%;
+    margin: 5px 10% 5px 10%;
+    height: 40px;
+    font-size: 25px;
+    font-family: HeaderFont;
+    background-color: transparent;
+    border: none;
+    border-bottom: 6px outset #650000;
+}
+.LoginForm>button:hover{
+    margin-top: 8px;
+    border: none;
+    border-bottom: 6px inset #650000;
+}

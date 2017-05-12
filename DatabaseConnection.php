@@ -18,6 +18,7 @@ define('LOGIN_FIELD' , 'admin_login');
 define('PASSWORD_FIELD' , 'admin_password');
 define('ID_FIELD' , 'id');
 define('HASH_FIELD_NAME' , "curr_session_hash");
+define('SALT_STRING','Silentium');
 ///////////////////////////////////////////////////////////
 
 define('NEWS_ID_COOKIE_NAME','EditingNewsId');

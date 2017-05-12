@@ -7,7 +7,7 @@
  */
 define('CURR_NEWS_PAGE', 'CurrentNews.html');
 
-define('PATH_FROM_SAVERS_TO_USER_VERSION','../../public_html/');
+define('PATH_FROM_SAVERS_TO_USER_VERSION','../../../');
 
 define('CHURCHES_TIMETABLE_FOLDER','churches/Timetable');
 define('CHURCHES_INFO_FOLDER','churches/Info');

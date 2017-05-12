@@ -30,7 +30,7 @@
         "Annotation" => "Год! Целый год мы ждали этого православного Дня Победы.Весь мир ликует от одной мысли: <font color=\"red\">ХРИСТОС ВОСКРЕС!</font>",
     )
 );*/
-include "../WholeProjectConstants/DatabaseConnection.php";
+include_once "ForAdmin/WholeProjectConstants/DatabaseConnection.php";
 
 function GetAllNews()
 {
@@ -50,6 +50,19 @@ function ConvertDate($Date)
 {
     $temp = explode('-',$Date);
     return $temp[2].'.'.$temp[1].'.'.$temp[0];
+}
+
+function GetFeedBackInfo()
+{
+    $DatabaseConnect = mysqli_connect(HOST,USER,PASSWORD,DATABASE_NAME);
+    $AllRecords_DB = mysqli_query($DatabaseConnect,"SELECT * FROM `" . FEEDBACK_DATABASE ."` ORDER BY `".FEEDBACK_DATABASE."`.`" . ID_FIELD . "` DESC");
+
+    $AllRecords = [];
+    while ($row = mysqli_fetch_assoc($AllRecords_DB)) {
+        $AllRecords[$row[ID_FIELD]] = $row;
+    }
+    mysqli_close($DatabaseConnect);
+    return $AllRecords;
 }
 
 //договоренность: *.html называется так же, как и папка

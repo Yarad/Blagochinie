@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="admin_templates/css/MainAdminPage.css">
+</head>
+<body>
+<div class="ContentField">
+    <h2>Что можно делать</h2>
+    <form action="NewsEditing.php" method="post" class="WhatToDoForm">
+        <button class="PageButtons" type="submit" onclick="document.cookie = 'Type=Add';">Добавить новость</button>
+    </form>
+
+    <form action="NewsEditing.php" method="post" class="WhatToDoForm">
+        <button class="ButtonsWithId" type="submit" onclick="document.cookie = 'Type=Edit';">Редактировать новость с id:
+        </button>
+        <input class="PageInputs" type="number" name="fIDToEdit">
+    </form>
+
+    <form action="NewsSaver.php" method="post" class="WhatToDoForm">
+        <button class="ButtonsWithId" type="submit" onclick="document.cookie = 'Type=Delete';">Удалить новость с id:
+        </button>
+        <input class="PageInputs" type="number" name="fIDToDelete">
+    </form>
+
+    <form action="TestDatabase.php" method="post" class="WhatToDoForm">
+        <button class="PageButtons" type="submit">Тестирование базы данных</button>
+    </form>
+
+    <form action="index.php" method="post" class="WhatToDoForm">
+        <button type="submit" name="exit" value="true" id="ExitBtn">Выйти</button>
+    </form>
+</div>
+
+</body>
+</html>

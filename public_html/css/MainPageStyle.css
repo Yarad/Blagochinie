@@ -67,9 +67,16 @@ A {
     background-size: 100%;
 }
 
+#CrossDiv:hover {
+    transform: scale(1.2);
+    transition-timing-function: ease-in;
+    transition-duration: 0.3s;
+}
+
 .MenuButton {
     display: inline-block;
-    width: 19%;
+    /*width: 19%;*/
+    padding: 0px 6px;
     height: 50px;
     margin: 0px;
     padding-top: 0px;
@@ -196,6 +203,7 @@ A {
     .MenuButton {
         width: 100%;
         margin: 0 0 1px 0px;
+        padding: 0px;
         background-image: url("../images/header.jpg");
         background-color: #ff6c00;
         background-size: contain;

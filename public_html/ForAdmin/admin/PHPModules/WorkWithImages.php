@@ -11,7 +11,7 @@
 function SaveSetOfImagesByDateNameAndNum($DateArr, $SetName, $ID, $SetOfImages)
 {
     //var_dump($SetOfImages);
-    include "../PHPModules/ImagesConstants.php";
+    include "PHPModules/ImagesConstants.php";
     //big-small*/
     $BigImagesPath = PATH_FROM_SAVERS_TO_USER_VERSION . NEWS_FOLDER . '/' . $DateArr[0] . '/' . $ID . '_' . $DateArr[2] . '.' . $DateArr[1] . '/' . $SetName . '/' . FOLDER_WITH_BIGGER_IMAGES . '/';
     $SmallImagesPath = PATH_FROM_SAVERS_TO_USER_VERSION . NEWS_FOLDER . '/' . $DateArr[0] . '/' . $ID . '_' . $DateArr[2] . '.' . $DateArr[1] . '/' . $SetName . '/' . FOLDER_WITH_SMALLER_IMAGES . '/';

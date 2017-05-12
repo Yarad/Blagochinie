@@ -16,9 +16,9 @@ function FormShortNewsList(&$InputNewsArray)
     $s = FormSmallHeaderByStr(SHORT_NEWS_TITLE);
     $s2 = file_get_contents('templates/ShortNewsTemplate.html');
 
-    $Amount=0;
+    $Amount = 0;
     //for ($i = 0; ($i < SHORT_NEWS_AMOUNT) && ($i < count($InputNewsArray)); $i++) {
-    foreach ($InputNewsArray as $id => $CurrNews){
+    foreach ($InputNewsArray as $id => $CurrNews) {
         $PostReq = $HrefUrl . '?' . 'Date=' . $CurrNews["Date"] . '&' . 'Num=' . $id;
         $temp = str_replace('{Link}', $PostReq, $s2);
         $temp = str_replace('{Text}', $CurrNews["Date"] . '<br> ' . $CurrNews["Name"], $temp);
@@ -39,6 +39,27 @@ function FormCurrNewsContentByNum(&$AllNews, $Num)
     $NewsTemplate = FormBigNewsHeaderByStr($AllNews[$Num]['Date'] . ' ' . $AllNews[$Num]['Name']);
     $NewsTemplate .= FillPageByTemplate($FolderPath, CURR_NEWS_PAGE, file_get_contents('templates/NewsImageTemplate.html'));
     return $NewsTemplate;
+}
+
+function FormFeedbackRecords(&$AllRecords)
+{
+    $s = '<div align="center">';
+    $tempName='';
+    $Files = glob("feedback/images/*");
+    $OneRecordTemplate = file_get_contents('templates/FeedbackRecordTemplate.html');
+    foreach ($AllRecords as $CurrRecord) {
+        foreach ($Files as $CurrFileName)
+            if (explode('.', $CurrFileName)[0] == "feedback/images/" . $CurrRecord['id']) {
+                $tempName = $CurrFileName;
+                break;
+            }
+        $temp = str_replace('{ImagePath}', $tempName, $OneRecordTemplate);
+        $temp = str_replace('{Text}', $CurrRecord['caption'], $temp);
+        $temp = str_replace('{PersonDescription}', $CurrRecord['person_description'], $temp);
+        $s .= $temp;
+    }
+    $s.= '</div>';
+    return $s;
 }
 
 function FillPageByTemplate($FolderPath, $TemplatePageName, $OneImageTemplate)

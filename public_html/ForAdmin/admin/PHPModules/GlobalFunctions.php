@@ -26,7 +26,14 @@ function CheckSecurity()
         mysqli_close($AdminsRecordsDatabase);
         return false;
     }
-    if (mysqli_fetch_array($HashSumByID)[0] != $CookieHash) {
+    $CryptedHashSum = mysqli_fetch_array($HashSumByID)[0];
+
+    if ($CryptedHashSum == null) {
+        mysqli_close($AdminsRecordsDatabase);
+        return false;
+    }
+
+    if (!hash_equals($CryptedHashSum, crypt($CookieHash, $CryptedHashSum))) {
         mysqli_close($AdminsRecordsDatabase);
         return false;
     }
@@ -63,4 +70,13 @@ function removeDirectory($dir) {
         }
     }
     return rmdir($dir);
+}
+
+function AddAdmin($Login, $Password)
+{
+    $AdminsRecordsDatabase = mysqli_connect(HOST, USER, PASSWORD, DATABASE_NAME);
+    $WritedPassword = crypt($Password,SALT_STRING);
+    //echo "INSERT INTO `admins_records`(`admin_login`, `admin_password`) VALUES ('$Login','$WritedPassword')<br>";
+    mysqli_query($AdminsRecordsDatabase,"INSERT INTO `admins_records`(`admin_login`, `admin_password`) VALUES ('$Login','$WritedPassword')");
+    mysqli_close($AdminsRecordsDatabase);
 }

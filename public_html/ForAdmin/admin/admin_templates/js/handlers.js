@@ -14,9 +14,9 @@ function AddSetOfPhotos() {
     NewSetElement.id = "PhotosSetDescription" + CurrPhotoSet;
 
     NewSetElement.innerHTML = '' +
-        '<input type="text" name="fSetsOfPhotosNames[' + CurrPhotoSet + ']" value="Имя группы фотографий" form="MainForm"/>' +
+        '<input type="text" name="fSetsOfPhotosNames_' + CurrPhotoSet + '" value="Имя группы фотографий" form="MainForm"/>' +
         '<button class="DeleteCurrSetButton" onclick="DeleteCurrSet('+ CurrPhotoSet +')"></button>'    +
-    '<br><input class="LoadFilesButtons" type="file" min="0" max="20" name="SetsOfPhotos_'+CurrPhotoSet+'[]" multiple="true" form="MainForm">';
+    '<br><input class="LoadFilesButtons" type="file" min="0" max="40" name="SetsOfPhotos_'+CurrPhotoSet+'[]" multiple="true" form="MainForm">';
     doc.appendChild(NewSetElement);
     CurrPhotoSet++;
 }

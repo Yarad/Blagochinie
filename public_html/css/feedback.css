@@ -1,0 +1,22 @@
+.FeedBackRecord{
+    display: inline-block;
+    width: 150px;
+    height: 200px;
+    margin: 10px;
+}
+
+.FeedbackImage{
+    border-radius: 100px;
+    border: 4px double #00662a;
+    width: 150px;
+    height: 150px;
+}
+.FeedbackImage:hover{
+    border: 4px solid #00662a;
+}
+
+.FeedbackText{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}

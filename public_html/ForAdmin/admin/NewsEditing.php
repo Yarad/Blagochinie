@@ -19,8 +19,14 @@ if (CheckSecurity() == false) {
     exit();
 }
 $s = file_get_contents('admin_templates/MainAdminEditorTemplate.html');
+if (!isset($_COOKIE['Type']))
+{
+    var_dump($_COOKIE);
+    echo '<button >Проба</button>';
+    exit;
+}
 
-if ($_POST['Type'] == "Edit") {
+if ($_COOKIE['Type'] == "Edit") {
     $Database = mysqli_connect(HOST, USER, PASSWORD, DATABASE_NAME);
     if ($Database == false) {
         echo file_get_contents('admin_templates/DatabaseError.html');
@@ -45,11 +51,9 @@ if ($_POST['Type'] == "Edit") {
     setcookie(NEWS_ID_COOKIE_NAME,$_POST['fIDToEdit']);
 
 }
-
-$s = str_replace('{Type}', $_POST['Type'], $s);
 $s = str_replace('{DefaultName}',$DefaultName,$s);
 $s = str_replace('{DefaultDate}',$DefaultDate,$s);
 $s = str_replace('{DefaultAnnotation}',$DefaultAnnotation,$s);
 $s = str_replace('{DefaultText}',$DefaultText,$s);
-
+$s = str_replace("{MainMenu}",file_get_contents('admin_templates/MainMenuTemplate.html'),$s);
 echo $s;
