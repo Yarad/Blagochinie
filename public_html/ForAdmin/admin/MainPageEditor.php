@@ -13,6 +13,7 @@ $DefaultText = '';
 $DefaultDate = '';
 $DefaultName = '';
 $DefaultAnnotation = '';
+$AddSetOfPhotosStyle = '';
 
 if (CheckSecurity() == false) {
     echo file_get_contents('admin_templates/AccessDenied.html');
@@ -46,12 +47,13 @@ if ($_COOKIE['Type'] == "Edit") {
     $DefaultName = $EditedNews[NEWS_NAME_FIELD];
     $DefaultAnnotation = $EditedNews[ANNOTATION_FIELD];
     $DefaultDate = $EditedNews[DATE_FIELD];
-    $DefaultText = file_get_contents("Savers/" . PATH_FROM_SAVERS_TO_USER_VERSION . NEWS_FOLDER . '/' . $DateArr[0] . '/' . $EditedNews[ID_FIELD] . '_' . $DateArr[2] . '.' . $DateArr[1] . '/' . CURR_NEWS_PAGE);
+    $DefaultText = file_get_contents(PATH_FROM_SAVERS_TO_USER_VERSION . NEWS_FOLDER . '/' . $DateArr[0] . '/' . $EditedNews[ID_FIELD] . '_' . $DateArr[2] . '.' . $DateArr[1] . '/' . CURR_NEWS_PAGE);
 
     setcookie(NEWS_ID_COOKIE_NAME,$_POST['fIDToEdit']);
-
+    $AddSetOfPhotosStyle = 'display:none';
 }
 $s = str_replace('{DefaultName}',$DefaultName,$s);
+$s = str_replace('{AddSetOfPhotosStyle}',$AddSetOfPhotosStyle,$s);
 $s = str_replace('{DefaultDate}',$DefaultDate,$s);
 $s = str_replace('{DefaultAnnotation}',$DefaultAnnotation,$s);
 $s = str_replace('{DefaultText}',$DefaultText,$s);

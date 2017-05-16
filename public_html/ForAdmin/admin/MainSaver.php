@@ -16,8 +16,6 @@ if (CheckSecurity() == false) {
     exit();
 }
 
-$s = file_get_contents('admin_templates/EditingResult.html');
-$s = str_replace("{POST}", "<h2 align='center'>POST</h2><pre>" . print_r($_POST,true) . "<br><h2 align='center'>FILES</h2>" . print_r($_FILES,true) . "</pre>", $s);
 
 $Result = '';
 if ($_COOKIE["Type"] == "Delete") {
@@ -28,6 +26,9 @@ elseif ($_COOKIE["Type"] == "Edit") {
     $Result = EditNewsById($_COOKIE[NEWS_ID_COOKIE_NAME]);
 }
 setcookie('Type','');
+
+$s = file_get_contents('admin_templates/EditingResult.html');
+$s = str_replace("{POST}", "<h2 align='center'>POST</h2><pre>" . print_r($_POST,true) . "<br><h2 align='center'>FILES</h2>" . print_r($_FILES,true) . "</pre>", $s);
 $s = str_replace('{content}', $Result, $s);
 $s = str_replace("{MainMenu}",file_get_contents('admin_templates/MainMenuTemplate.html'),$s);
 echo $s;

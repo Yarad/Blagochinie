@@ -7,17 +7,17 @@
 <body>
 <div class="ContentField">
     <h2>Что можно делать</h2>
-    <form action="NewsEditing.php" method="post" class="WhatToDoForm">
+    <form action="MainPageEditor.php" method="post" class="WhatToDoForm">
         <button class="PageButtons" type="submit" onclick="document.cookie = 'Type=Add';">Добавить новость</button>
     </form>
 
-    <form action="NewsEditing.php" method="post" class="WhatToDoForm">
+    <form action="MainPageEditor.php" method="post" class="WhatToDoForm">
         <button class="ButtonsWithId" type="submit" onclick="document.cookie = 'Type=Edit';">Редактировать новость с id:
         </button>
         <input class="PageInputs" type="number" name="fIDToEdit">
     </form>
 
-    <form action="NewsSaver.php" method="post" class="WhatToDoForm">
+    <form action="MainSaver.php" method="post" class="WhatToDoForm">
         <button class="ButtonsWithId" type="submit" onclick="document.cookie = 'Type=Delete';">Удалить новость с id:
         </button>
         <input class="PageInputs" type="number" name="fIDToDelete">

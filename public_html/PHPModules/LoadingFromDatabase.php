@@ -30,8 +30,7 @@
         "Annotation" => "Год! Целый год мы ждали этого православного Дня Победы.Весь мир ликует от одной мысли: <font color=\"red\">ХРИСТОС ВОСКРЕС!</font>",
     )
 );*/
-include_once "ForAdmin/WholeProjectConstants/DatabaseConnection.php";
-
+include "ForAdmin/WholeProjectConstants/DatabaseConnection.php";
 function GetAllNews()
 {
     $DatabaseConnect = mysqli_connect(HOST,USER,PASSWORD,DATABASE_NAME);

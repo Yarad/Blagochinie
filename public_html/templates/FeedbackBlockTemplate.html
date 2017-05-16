@@ -1,0 +1,16 @@
+<div align="center">
+    {Recievers}
+</div>
+<form name="SendForm" method="post" action="feedback.php">
+    <p style="margin: 5px 10%; width: 60%">
+        Ваше имя:
+        <input name="SenderName" style="width: 40%;float: right">
+    </p>
+    <p style="margin: 5px 10%; width: 60%">
+        Как с вами связаться:
+        <input name="SenderAddress" style="width: 40%;float: right">
+    </p>
+    <textarea name="Message" style="width: 80%; margin: 5px 10%; height: 130px"></textarea>
+    <textarea name="Reciever" id="Reciever" style="display: none"></textarea>
+    <button type="submit" style="margin: 10px 10%;float: right;">Отправить</button>
+</form>

@@ -43,7 +43,8 @@ function FormCurrNewsContentByNum(&$AllNews, $Num)
 
 function FormFeedbackRecords(&$AllRecords)
 {
-    $s = '<div align="center">';
+    $Result = file_get_contents('templates/FeedbackBlockTemplate.html');
+    $Recievers = '';
     $tempName='';
     $Files = glob("feedback/images/*");
     $OneRecordTemplate = file_get_contents('templates/FeedbackRecordTemplate.html');
@@ -56,10 +57,11 @@ function FormFeedbackRecords(&$AllRecords)
         $temp = str_replace('{ImagePath}', $tempName, $OneRecordTemplate);
         $temp = str_replace('{Text}', $CurrRecord['caption'], $temp);
         $temp = str_replace('{PersonDescription}', $CurrRecord['person_description'], $temp);
-        $s .= $temp;
+        $temp = str_replace('{Id}', $CurrRecord['id'], $temp);
+        $Recievers .= $temp;
     }
-    $s.= '</div>';
-    return $s;
+    $Result = str_replace('{Recievers}',$Recievers,$Result);
+    return $Result;
 }
 
 function FillPageByTemplate($FolderPath, $TemplatePageName, $OneImageTemplate)

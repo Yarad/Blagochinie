@@ -14,6 +14,10 @@
 .FeedbackImage:hover{
     border: 4px solid #00662a;
 }
+.FeedbackImage_choosed{
+    border: 4px solid #00662a;
+    transform: scale(1.1,1.1);
+}
 
 .FeedbackText{
     margin: 0px;
