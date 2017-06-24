@@ -39,3 +39,9 @@ define('DELETE_ERROR',"Ошибка удаления");
 define('ADDED_SUCCESSFULLY',"Успешно добавлено.");
 define('UPDATED_SUCCESSFULLY',"Успешно обновлено.");
 define('WRONG_DATA',"Данные введены неверно");
+
+//
+define('CHURCHES_TABLE','all_churches');
+define('ALBUMS_TABLE',"all_albums");
+define('CHURCHES_TIMETABLE_COOKIE',"");
+define('CHURCHES_ID_COOKIE_NAME','UpdatingChurchId');

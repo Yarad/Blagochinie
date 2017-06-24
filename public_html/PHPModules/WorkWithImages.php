@@ -57,11 +57,20 @@ function FormGalleriesShortInfo(&$GalleryArray, $PrePhotoFolder,$CurrGalleryHand
 {
     $s = file_get_contents('templates/GalleryAlbumTemplate.html');
     $result = "";
+    $dirInfo = scandir($PrePhotoFolder);
+
     foreach ($GalleryArray as $key => $Image) {
+        foreach ($dirInfo as $CurrFile) {
+            $Name=explode('.', $CurrFile)[0];
+            if ($Name == $Image['id']) {
+                $FileName = $CurrFile;
+                break;
+            }
+        }
         $temp = $s;
-        $temp = str_replace('{SmallPath}', $PrePhotoFolder . '/' . $Image['SmallImageName'], $temp);
+        $temp = str_replace('{SmallPath}', $PrePhotoFolder . '/' . $FileName, $temp);
         $temp = str_replace('{Title}',$Image["Title"],$temp);
-        $temp = str_replace('{Link}', $CurrGalleryHandler . '?'. "ID=" . $Image["ID"], $temp);
+        $temp = str_replace('{Link}', $CurrGalleryHandler . '?'. "ID=" . $Image["id"], $temp);
         $result .= $temp;
     }
     $s = file_get_contents('templates/ImagesSection.html');

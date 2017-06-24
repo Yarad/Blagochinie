@@ -23,6 +23,12 @@
         <input class="PageInputs" type="number" name="fIDToDelete">
     </form>
 
+    <form action="MainPageEditor.php" method="post" class="WhatToDoForm">
+        <button class="ButtonsWithId" style="width: 100%;!important;" type="submit" onclick="document.cookie = 'Type=UpdateTimetable';">Обновить расписание храма c ID:
+        </button>
+        <input style="width:98%; font-size: 20px" name="fIDToUpdate">
+    </form>
+
     <form action="TestDatabase.php" method="post" class="WhatToDoForm">
         <button class="PageButtons" type="submit">Тестирование базы данных</button>
     </form>

@@ -11,6 +11,7 @@ include 'PHPModules/MainFunctions.php';
 include_once 'PHPModules/Constants.php';
 
 $AllNews=GetAllNews();
+$AllChurches = GetAllChurches();
 if(count($_GET) == 0) {
     $CurrID = "svyatovved";
 }
@@ -30,7 +31,7 @@ $JS_OnLoad_Addings = "";
 
 $Left_Content = FormShortNewsList($AllNews);
 $Main_Content = FormSmallHeaderByStr($AllChurches[$CurrID]["Title"]);
-$Main_Content .= FillPageByTemplate(CHURCHES_INFO_FOLDER . '/' . $AllChurches[$CurrID]['ID'],$AllChurches[$CurrID]['ID'] . ".html", file_get_contents('templates/NewsImageTemplate.html'));
+$Main_Content .= FillPageByTemplate(CHURCHES_INFO_FOLDER . '/' . $AllChurches[$CurrID]['id'],$AllChurches[$CurrID]['id'] . ".html", file_get_contents('templates/NewsImageTemplate.html'));
 
 $HTML_File = str_replace("{Title}", $Title, $HTML_File);
 $HTML_File = str_replace("{Other_Attributes}", $Other_Attributes, $HTML_File);

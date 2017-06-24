@@ -12,6 +12,7 @@ include_once 'PHPModules/Constants.php';
 
 $HTML_File = file_get_contents("templates/MainTemplate.html");
 $AllNews = GetAllNews();
+$AllChurches = GetAllChurches();
 $Title = 'Храмы Осиповичского района.' ;
 $Other_Attributes = "<meta name='description' content='Официальный сайт Осиповичского благочиния. Расписания работы всех храмов' />";
 $Stylesheets_Addings = '<link rel="stylesheet" href="css/CustomObjectStyle.css">

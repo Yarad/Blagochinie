@@ -19,6 +19,7 @@ else
 }
 
 $AllNews = GetAllNews();
+$AllChurches = GetAllChurches();
 $HTML_File = file_get_contents("templates/MainTemplate.html");
 
 $Title = $AllChurches[$CurrID]["Title"]  . ' Расписание.' ;
@@ -31,8 +32,8 @@ $JS_OnLoad_Addings = "";
 $Left_Content = FormShortNewsList($AllNews);
 $Main_Content = FormSmallHeaderByStr($AllChurches[$CurrID]["Title"]);
 
-if (file_exists(CHURCHES_TIMETABLE_FOLDER . '/' . $AllChurches[$CurrID]['ID'] . '/' . $AllChurches[$CurrID]['ID'] . '.html') == true)
-    $Main_Content .= FillPageByTemplate(CHURCHES_TIMETABLE_FOLDER . '/' . $AllChurches[$CurrID]['ID'],$AllChurches[$CurrID]['ID'] . '.html', file_get_contents('templates/NewsImageTemplate.html'));
+if (file_exists(CHURCHES_TIMETABLE_FOLDER . '/' . $AllChurches[$CurrID]['id'] . '/' . $AllChurches[$CurrID]['id'] . '.html') == true)
+    $Main_Content .= FillPageByTemplate(CHURCHES_TIMETABLE_FOLDER . '/' . $AllChurches[$CurrID]['id'],$AllChurches[$CurrID]['id'] . '.html', file_get_contents('templates/NewsImageTemplate.html'));
 else
     $Main_Content .= file_get_contents("templates/NoTimetableTemplate.html");
 

@@ -14,6 +14,7 @@ $DefaultDate = '';
 $DefaultName = '';
 $DefaultAnnotation = '';
 $AddSetOfPhotosStyle = '';
+$LeftPanelStyles = '';
 
 if (CheckSecurity() == false) {
     echo file_get_contents('admin_templates/AccessDenied.html');
@@ -52,10 +53,34 @@ if ($_COOKIE['Type'] == "Edit") {
     setcookie(NEWS_ID_COOKIE_NAME,$_POST['fIDToEdit']);
     $AddSetOfPhotosStyle = 'display:none';
 }
+//UpdateTimetable
+if ($_COOKIE['Type'] == "UpdateTimetable") {
+    $Database = mysqli_connect(HOST, USER, PASSWORD, DATABASE_NAME);
+    if ($Database == false) {
+        echo file_get_contents('admin_templates/DatabaseError.html');
+        exit();
+    }
+
+    $EditedNews_DB = mysqli_query($Database,"SELECT * FROM `" . CHURCHES_TABLE ."` WHERE " . ID_FIELD . "=" . '"' . $_POST['fIDToUpdate'] .'"');
+    mysqli_close($Database);
+    if ($EditedNews_DB == false) {
+        echo file_get_contents('admin_templates/DatabaseQueryError.html');
+        exit();
+    }
+
+    $LeftPanelStyles = 'display:none;';
+    $DefaultText = file_get_contents(PATH_FROM_SAVERS_TO_USER_VERSION . "churches/Timetable" . '/' . $_POST['fIDToUpdate'] .'/' . $_POST['fIDToUpdate'] .'.html');
+
+    setcookie(CHURCHES_ID_COOKIE_NAME,$_POST['fIDToUpdate']);
+    $AddSetOfPhotosStyle = 'display:none';
+}
+
 $s = str_replace('{DefaultName}',$DefaultName,$s);
 $s = str_replace('{AddSetOfPhotosStyle}',$AddSetOfPhotosStyle,$s);
 $s = str_replace('{DefaultDate}',$DefaultDate,$s);
 $s = str_replace('{DefaultAnnotation}',$DefaultAnnotation,$s);
 $s = str_replace('{DefaultText}',$DefaultText,$s);
+$s = str_replace("{LeftPanelStyle}",$LeftPanelStyles,$s);
 $s = str_replace("{MainMenu}",file_get_contents('admin_templates/MainMenuTemplate.html'),$s);
+
 echo $s;

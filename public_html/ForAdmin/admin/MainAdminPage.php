@@ -2,9 +2,6 @@
 include('PHPModules/GlobalFunctions.php');
 include('../WholeProjectConstants/DatabaseConnection.php');
 
-//AddAdmin('Yarad','rehcrfz');
-//AddAdmin('anastasi','alitheia');
-
 if (CheckSecurity() == false)
 {
     echo file_get_contents('admin_templates/AccessDenied.html');

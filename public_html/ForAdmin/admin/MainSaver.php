@@ -25,6 +25,9 @@ if ($_COOKIE["Type"] == "Delete") {
 elseif ($_COOKIE["Type"] == "Edit") {
     $Result = EditNewsById($_COOKIE[NEWS_ID_COOKIE_NAME]);
 }
+elseif ($_COOKIE["Type"] == "UpdateTimetable") {
+    $Result = UpdateTimeTableByChurchId($_COOKIE[CHURCHES_ID_COOKIE_NAME]);
+}
 setcookie('Type','');
 
 $s = file_get_contents('admin_templates/EditingResult.html');
@@ -107,5 +110,11 @@ function EditNewsById($ID){
 //1 - месяц
 //2 - число
     file_put_contents(PATH_FROM_SAVERS_TO_USER_VERSION . NEWS_FOLDER . '/' . $DateArr[0] . '/' . $ID . '_' . $DateArr[2] . '.' . $DateArr[1] . '/' . CURR_NEWS_PAGE, $_POST['fPreparedHtmlContent']);
+    return UPDATED_SUCCESSFULLY . "ID = $ID";
+}
+
+function UpdateTimeTableByChurchId($ID){
+    if (!isset($_POST['fPreparedHtmlContent'])) return WRONG_DATA;
+    file_put_contents(PATH_FROM_SAVERS_TO_USER_VERSION . "churches/Timetable" . '/' . $ID .'/' . $ID .'.html', $_POST['fPreparedHtmlContent']);
     return UPDATED_SUCCESSFULLY . "ID = $ID";
 }

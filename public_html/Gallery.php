@@ -11,6 +11,7 @@ include 'PHPModules/MainFunctions.php';
 include_once 'PHPModules/Constants.php';
 
 $AllNews = GetAllNews();
+$AllAlbums = GetAllAlbums();
 $HTML_File = file_get_contents("templates/MainTemplate.html");
 $AllNewsInJSON = json_encode($AllNews, JSON_UNESCAPED_UNICODE);
 

@@ -18,6 +18,7 @@ else
     $CurrID = $_GET['ID'];
 }
 $AllNews = GetAllNews();
+$AllAlbums = GetAllAlbums();
 $HTML_File = file_get_contents("templates/MainTemplate.html");
 
 $Title = MAIN_TITLE  . '. Фото. ' . $AllAlbums[$CurrID]["Title"];

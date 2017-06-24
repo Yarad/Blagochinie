@@ -97,7 +97,7 @@ A {
     display: none;
 }
 
-.Menu ul {
+.Menu div {
     padding: 0px;
     margin: 0px;
     text-align: center;
@@ -192,7 +192,7 @@ A {
 
 
 
-    .Menu ul {
+    .Menu div {
         width:90%;
         display: none;
         padding: 0px;

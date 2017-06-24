@@ -12,7 +12,7 @@ body{
 .ContentField{
     width: 270px;
     height: 66vh;
-    padding: 5vh 15px 5vh 15px;
+    padding: 5vh 30px;
     margin: 10vh 0px 10vh 10vh;
     background-color: #c0835d;
     border: 2vh inset #3B1413;
@@ -26,8 +26,8 @@ body{
 }
 
 .PageButtons {
-    width: 80%;
-    margin: 5px 10% 5px 10%;
+    width: 100%;
+    margin: 5px 0%;
     height: 40px;
     font-family: HeaderFont;
     background-color: transparent;
@@ -39,8 +39,8 @@ body{
 }
 
 .ButtonsWithId{
-    width: 55%;
-    margin: 5px 2% 5px 10%;
+    width: 70%;
+    margin: 5px 0px;
     height: 40px;
     float: left;
     font-family: HeaderFont;
@@ -49,7 +49,7 @@ body{
 
 .PageInputs{
     width: 20%;
-    margin: 5px 10% 5px 0px;
+    margin: 5px 0% 5px 0px;
     float: right;
     height: 30px;
     font-size: 20px;

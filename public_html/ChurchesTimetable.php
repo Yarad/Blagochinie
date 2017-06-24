@@ -12,6 +12,7 @@ include_once 'PHPModules/Constants.php';
 
 $HTML_File = file_get_contents("templates/MainTemplate.html");
 $AllNews = GetAllNews();
+$AllChurches = GetAllChurches();
 
 $Title = MAIN_TITLE   . ' Расписания богослужений.' ;
 $Other_Attributes = "<meta name='description' content='Расписание богослужений. Службы. Телефон.'>";

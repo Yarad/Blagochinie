@@ -10,29 +10,34 @@
 {MainMenu}
 <div class="LeftMenu"></div>
 <div class="EditorLayer">
-    <div id="MyElementsBlock">
-        <h3>Параметры добавляемой новости</h3>
-        <div class="OneParameter">
-            <div class="OneParameter_Name">Дата:</div>
-            <div class="OneParameter_Field"><input type="date" name="fDate" form="MainForm" value="{DefaultDate}"></div>
-            <div style="clear: both"></div>
-        </div>
-        <div class="OneParameter">
-            <div class="OneParameter_Name">Название новости:</div>
-            <div class="OneParameter_Field"><textarea name="fNewsName" class="fTextboxes" form="MainForm">{DefaultName}</textarea></div>
-            <div style="clear: both"></div>
-        </div>
-        <div class="OneParameter">
-            <div class="OneParameter_Name">Краткое описание новости:</div>
-            <div class="OneParameter_Field"><textarea name="fNewsAnnotation" class="fTextboxes" form="MainForm">{DefaultAnnotation}</textarea></div>
-            <div style="clear: both"></div>
-        </div>
-        <div class="OneParameter">
-            <div class="OneParameter_Name" style="{AddSetOfPhotosStyle}">
-                <button id="AddBlocksOfPhotos" onclick="AddSetOfPhotos()"></button>
+    <div id="MyElementsBlock" >
+        <div style="{LeftPanelStyle}">
+            <h3>Параметры добавляемой новости</h3>
+            <div class="OneParameter">
+                <div class="OneParameter_Name">Дата:</div>
+                <div class="OneParameter_Field"><input type="date" name="fDate" form="MainForm" value="{DefaultDate}">
+                </div>
+                <div style="clear: both"></div>
             </div>
-            <div id="FormOfAddedPhotos" class="OneParameter_Field"></div>
-            <div style="clear: both"></div>
+            <div class="OneParameter">
+                <div class="OneParameter_Name">Название новости:</div>
+                <div class="OneParameter_Field"><textarea name="fNewsName" class="fTextboxes" form="MainForm">{DefaultName}</textarea>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="OneParameter">
+                <div class="OneParameter_Name">Краткое описание новости:</div>
+                <div class="OneParameter_Field"><textarea name="fNewsAnnotation" class="fTextboxes" form="MainForm">{DefaultAnnotation}</textarea>
+                </div>
+                <div style="clear: both"></div>
+            </div>
+            <div class="OneParameter">
+                <div class="OneParameter_Name" style="{AddSetOfPhotosStyle}">
+                    <button id="AddBlocksOfPhotos" onclick="AddSetOfPhotos()"></button>
+                </div>
+                <div id="FormOfAddedPhotos" class="OneParameter_Field"></div>
+                <div style="clear: both"></div>
+            </div>
         </div>
         <form id="MainForm" enctype="multipart/form-data" method="post" action="MainSaver.php"></form>
         <button id="SaveChangesButton" onclick="SaveChanges();">Сохранить</button>

@@ -32,10 +32,10 @@ if(isset($_POST['Reciever']))
     if($Result==true)
         $Main_Content = FormSmallHeaderByStr("Письмо отправлено.");
     else
-        $Main_Content = FormSmallHeaderByStr("ОШИБКА! ПИСЬМО НЕ ОТПРАВЛЕНО!") . '<p align="center">(Выберите того, кому хотите написать, и заполните сообщение снизу страницы)</p>' . FormFeedbackRecords($FeedBackInfo);
+        $Main_Content = FormSmallHeaderByStr("ОШИБКА! ПИСЬМО НЕ ОТПРАВЛЕНО!") . '<p style="text-align:center;">(Выберите того, кому хотите написать, и заполните сообщение снизу страницы)</p>' . FormFeedbackRecords($FeedBackInfo);
 }
 else
-    $Main_Content = FormSmallHeaderByStr("Обратная связь") . '<p align="center">(Выберите того, кому хотите написать, и заполните сообщение снизу страницы)</p>' . FormFeedbackRecords($FeedBackInfo);
+    $Main_Content = FormSmallHeaderByStr("Обратная связь") . '<p style="text-align:center;">(Выберите того, кому хотите написать, и заполните сообщение снизу страницы)</p>' . FormFeedbackRecords($FeedBackInfo);
 
 $HTML_File = str_replace("{Title}", $Title, $HTML_File);
 $HTML_File = str_replace("{Other_Attributes}", $Other_Attributes, $HTML_File);
